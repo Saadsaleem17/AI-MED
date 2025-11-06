@@ -1,42 +1,24 @@
 const nodemailer = require('nodemailer');
 
-// Create transporter
-const createTransporter = () => {
-  // For development, use ethereal email (fake SMTP)
-  // For production, use real SMTP service (Gmail, SendGrid, etc.)
-  
-  if (process.env.NODE_ENV === 'production') {
-    // Production: Use real email service
-    return nodemailer.createTransport({
-      service: process.env.EMAIL_SERVICE || 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-      }
-    });
-  } else {
-    // Development: Use ethereal (fake SMTP for testing)
-    // You can also configure Gmail for testing
-    return nodemailer.createTransporter({
-      host: 'smtp.ethereal.email',
-      port: 587,
-      auth: {
-        user: process.env.EMAIL_USER || 'test@ethereal.email',
-        pass: process.env.EMAIL_PASSWORD || 'test'
-      }
-    });
-  }
-};
+function createTransporter() {
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD
+    }
+  });
+}
 
-const sendVerificationEmail = async (email, token, firstName) => {
+async function sendVerificationEmail(email, token, firstName) {
   try {
     const transporter = createTransporter();
-    const verificationUrl = `${process.env.FRONTEND_URL || 'http://localhost:8080'}/verify-email?token=${token}`;
+    const verifyUrl = `${process.env.FRONTEND_URL || 'http://localhost:8080'}/verify-email?token=${token}`;
     
     const mailOptions = {
-      from: process.env.EMAIL_FROM || '"Medical App" <noreply@medicalapp.com>',
+      from: `"Medical App" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: 'Verify Your Email Address',
+      subject: 'Verify Your Email',
       html: `
         <!DOCTYPE html>
         <html>
@@ -60,10 +42,10 @@ const sendVerificationEmail = async (email, token, firstName) => {
               <p>Thank you for signing up! Please verify your email address to complete your registration.</p>
               <p>Click the button below to verify your email:</p>
               <div style="text-align: center;">
-                <a href="${verificationUrl}" class="button">Verify Email Address</a>
+                <a href="${verifyUrl}" class="button">Verify Email Address</a>
               </div>
               <p>Or copy and paste this link into your browser:</p>
-              <p style="word-break: break-all; color: #667eea;">${verificationUrl}</p>
+              <p style="word-break: break-all; color: #667eea;">${verifyUrl}</p>
               <p><strong>This link will expire in 1 hour.</strong></p>
               <p>If you didn't create an account, please ignore this email.</p>
             </div>
@@ -77,27 +59,23 @@ const sendVerificationEmail = async (email, token, firstName) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Verification email sent:', info.messageId);
-    
-    // For development with ethereal, log the preview URL
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Preview URL:', nodemailer.getTestMessageUrl(info));
-    }
+    console.log('✅ Verification email sent:', info.messageId);
+    console.log('📧 Email sent to:', email);
     
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Error sending verification email:', error);
+    console.error('❌ Error sending verification email:', error.message);
     return { success: false, error: error.message };
   }
-};
+}
 
-const sendPasswordResetEmail = async (email, token, firstName) => {
+async function sendPasswordResetEmail(email, token, firstName) {
   try {
     const transporter = createTransporter();
     const resetUrl = `${process.env.FRONTEND_URL || 'http://localhost:8080'}/reset-password?token=${token}`;
     
     const mailOptions = {
-      from: process.env.EMAIL_FROM || '"Medical App" <noreply@medicalapp.com>',
+      from: `"Medical App" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Reset Your Password',
       html: `
@@ -140,14 +118,14 @@ const sendPasswordResetEmail = async (email, token, firstName) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Password reset email sent:', info.messageId);
+    console.log('✅ Password reset email sent:', info.messageId);
     
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Error sending password reset email:', error);
+    console.error('❌ Error sending password reset email:', error.message);
     return { success: false, error: error.message };
   }
-};
+}
 
 module.exports = {
   sendVerificationEmail,

@@ -17,6 +17,8 @@ import ReportAnalyzer from "./pages/ReportAnalyzer";
 import MedicationAssistant from "./pages/MedicationAssistant";
 import HealthRecords from "./pages/HealthRecords";
 import NotFound from "./pages/NotFound";
+import VerifyEmail from "./pages/VerifyEmail";
+import ResendVerification from "./pages/ResendVerification";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,8 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
+          <Route path="/resend-verification" element={<ResendVerification />} />
           
           {/* Protected routes */}
           <Route path="/home" element={<AuthGuard><Home /></AuthGuard>} />

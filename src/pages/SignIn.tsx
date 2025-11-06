@@ -35,7 +35,19 @@ const SignIn = () => {
         console.log('Login successful, rememberMe was:', rememberMe);
         navigate("/home");
       } else {
-        toast.error(result.error || "Login failed");
+        // Check if user needs email verification
+        if (result.needsVerification) {
+          toast.error(result.error || "Please verify your email");
+          // Optionally redirect to resend verification page
+          setTimeout(() => {
+            const shouldResend = confirm('Would you like to resend the verification email?');
+            if (shouldResend) {
+              navigate('/resend-verification');
+            }
+          }, 1000);
+        } else {
+          toast.error(result.error || "Login failed");
+        }
       }
     } catch (error) {
       console.error('Login error:', error);
