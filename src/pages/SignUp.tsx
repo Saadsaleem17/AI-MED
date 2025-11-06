@@ -6,19 +6,22 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
+import { authService } from "@/services/authService";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
   const [agreeToTerms, setAgreeToTerms] = useState(false);
 
-  const handleSignUp = () => {
-    if (!formData.name || !formData.email || !formData.password) {
+  const handleSignUp = async () => {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
       toast.error("Please fill in all fields");
       return;
     }
@@ -26,8 +29,27 @@ const SignUp = () => {
       toast.error("Please agree to terms and conditions");
       return;
     }
-    toast.success("Account created successfully!");
-    navigate("/home");
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      const result = await authService.register(formData);
+      
+      if (result.success) {
+        toast.success("Account created successfully!");
+        navigate("/home");
+      } else {
+        toast.error(result.error || "Registration failed");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,15 +71,29 @@ const SignUp = () => {
         {/* Form */}
         <div className="space-y-6">
           <div>
-            <Label htmlFor="name" className="text-sm font-medium mb-2 block">
-              Enter your name
+            <Label htmlFor="firstName" className="text-sm font-medium mb-2 block">
+              First Name
             </Label>
             <Input
-              id="name"
+              id="firstName"
               type="text"
-              placeholder="Enter your name"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              placeholder="Enter your first name"
+              value={formData.firstName}
+              onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+              className="h-12 rounded-2xl bg-card"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="lastName" className="text-sm font-medium mb-2 block">
+              Last Name
+            </Label>
+            <Input
+              id="lastName"
+              type="text"
+              placeholder="Enter your last name"
+              value={formData.lastName}
+              onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
               className="h-12 rounded-2xl bg-card"
             />
           </div>
@@ -112,8 +148,13 @@ const SignUp = () => {
             </Label>
           </div>
 
-          <Button onClick={handleSignUp} className="w-full" size="lg">
-            Sign Up
+          <Button 
+            onClick={handleSignUp} 
+            className="w-full" 
+            size="lg"
+            disabled={loading}
+          >
+            {loading ? "Creating Account..." : "Sign Up"}
           </Button>
 
           <div className="text-center text-sm text-muted-foreground">

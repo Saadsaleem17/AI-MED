@@ -6,20 +6,37 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
+import { authService } from "@/services/authService";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     if (!email || !password) {
       toast.error("Please fill in all fields");
       return;
     }
-    toast.success("Signed in successfully!");
-    navigate("/home");
+
+    setLoading(true);
+    
+    try {
+      const result = await authService.login({ email, password });
+      
+      if (result.success) {
+        toast.success("Signed in successfully!");
+        navigate("/home");
+      } else {
+        toast.error(result.error || "Login failed");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -89,8 +106,13 @@ const SignIn = () => {
             </button>
           </div>
 
-          <Button onClick={handleSignIn} className="w-full" size="lg">
-            Sign In
+          <Button 
+            onClick={handleSignIn} 
+            className="w-full" 
+            size="lg"
+            disabled={loading}
+          >
+            {loading ? "Signing In..." : "Sign In"}
           </Button>
 
           <div className="text-center text-sm text-muted-foreground">

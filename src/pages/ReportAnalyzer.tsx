@@ -12,18 +12,88 @@ const ReportAnalyzer = () => {
   const { toast } = useToast();
   const [analysis, setAnalysis] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [dragActive, setDragActive] = useState(false);
 
-  const handleFileUpload = () => {
-    // Mock analysis result
-    setAnalysis({
-      text: "Blood test report from 2024-01-15. Patient: John Doe",
-      summary: "All values are within normal range. Hemoglobin slightly elevated but acceptable.",
-      parameters: [
-        { name: "Hemoglobin", value: "15.2 g/dL", status: "normal" },
-        { name: "WBC Count", value: "7,500/μL", status: "normal" },
-        { name: "Blood Sugar", value: "95 mg/dL", status: "normal" },
-      ],
-    });
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      handleFile(file);
+    }
+  };
+
+  const handleFile = (file: File) => {
+    // Validate file type
+    const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
+    if (!validTypes.includes(file.type)) {
+      toast({
+        title: "Invalid File Type",
+        description: "Please upload a PDF or image file (JPG, PNG)",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate file size (max 10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      toast({
+        title: "File Too Large",
+        description: "Please upload a file smaller than 10MB",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setSelectedFile(file);
+    processFile(file);
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  };
+
+  const processFile = (file: File) => {
+    setLoading(true);
+    
+    // Simulate file processing delay
+    setTimeout(() => {
+      // Mock analysis result based on file
+      setAnalysis({
+        text: `Medical report from ${file.name}. Uploaded on ${new Date().toLocaleDateString()}. Patient: John Doe`,
+        summary: "All values are within normal range. Hemoglobin slightly elevated but acceptable.",
+        parameters: [
+          { name: "Hemoglobin", value: "15.2 g/dL", status: "normal" },
+          { name: "WBC Count", value: "7,500/μL", status: "normal" },
+          { name: "Blood Sugar", value: "95 mg/dL", status: "normal" },
+        ],
+      });
+      setLoading(false);
+      
+      toast({
+        title: "File Processed",
+        description: `Successfully analyzed ${file.name}`,
+      });
+    }, 2000);
+  };
+
+  const triggerFileInput = () => {
+    document.getElementById('file-input')?.click();
   };
 
   const handleSaveReport = async () => {
@@ -35,13 +105,13 @@ const ReportAnalyzer = () => {
       
       const report: Omit<Report, '_id' | 'uploadDate'> = {
         userId,
-        fileName: 'blood-test-report.pdf',
-        fileType: 'pdf',
+        fileName: selectedFile?.name || 'medical-report.pdf',
+        fileType: selectedFile?.type || 'application/pdf',
         extractedText: analysis.text,
         summary: analysis.summary,
         parameters: analysis.parameters,
         metadata: {
-          reportDate: new Date('2024-01-15'),
+          reportDate: new Date(),
           patientName: 'John Doe',
         },
       };
@@ -86,7 +156,26 @@ const ReportAnalyzer = () => {
 
       {/* Upload Area */}
       <div className="px-6 mt-6">
-        <Card className="p-8 shadow-card mb-6 border-2 border-dashed border-border hover:border-primary transition-smooth cursor-pointer">
+        <input
+          id="file-input"
+          type="file"
+          accept=".pdf,.jpg,.jpeg,.png"
+          onChange={handleFileSelect}
+          className="hidden"
+        />
+        
+        <Card 
+          className={`p-8 shadow-card mb-6 border-2 border-dashed transition-smooth cursor-pointer ${
+            dragActive 
+              ? 'border-primary bg-primary/5' 
+              : 'border-border hover:border-primary'
+          }`}
+          onClick={triggerFileInput}
+          onDragEnter={handleDrag}
+          onDragLeave={handleDrag}
+          onDragOver={handleDrag}
+          onDrop={handleDrop}
+        >
           <div className="flex flex-col items-center gap-4 text-center">
             <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
               <Upload className="w-8 h-8 text-primary" />
@@ -96,13 +185,32 @@ const ReportAnalyzer = () => {
               <p className="text-sm text-muted-foreground">
                 Drop PDF or image files here, or click to browse
               </p>
+              {selectedFile && (
+                <p className="text-sm text-primary mt-2">
+                  Selected: {selectedFile.name}
+                </p>
+              )}
             </div>
-            <Button onClick={handleFileUpload}>Choose File</Button>
+            <Button onClick={triggerFileInput} type="button">
+              {selectedFile ? 'Change File' : 'Choose File'}
+            </Button>
           </div>
         </Card>
 
+        {/* Loading State */}
+        {loading && (
+          <Card className="p-8 shadow-card mb-6">
+            <div className="flex flex-col items-center gap-4 text-center">
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-sm text-muted-foreground">
+                Processing your medical report...
+              </p>
+            </div>
+          </Card>
+        )}
+
         {/* Analysis Results */}
-        {analysis && (
+        {analysis && !loading && (
           <div className="space-y-4">
             <Card className="p-5 shadow-md">
               <div className="flex items-center gap-2 mb-3">
