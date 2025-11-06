@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AuthGuard from "./components/AuthGuard";
 import Welcome from "./pages/Welcome";
 import Auth from "./pages/Auth";
 import SignIn from "./pages/SignIn";
@@ -26,20 +27,24 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* Public routes */}
           <Route path="/" element={<Welcome />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/doctor/:id" element={<DoctorDetail />} />
-          <Route path="/explore" element={<Pharmacy />} />
-          <Route path="/pharmacy" element={<Pharmacy />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/bookings" element={<Home />} />
-          <Route path="/symptom-checker" element={<SymptomChecker />} />
-          <Route path="/report-analyzer" element={<ReportAnalyzer />} />
-          <Route path="/medication-assistant" element={<MedicationAssistant />} />
-          <Route path="/health-records" element={<HealthRecords />} />
+          
+          {/* Protected routes */}
+          <Route path="/home" element={<AuthGuard><Home /></AuthGuard>} />
+          <Route path="/doctor/:id" element={<AuthGuard><DoctorDetail /></AuthGuard>} />
+          <Route path="/explore" element={<AuthGuard><Pharmacy /></AuthGuard>} />
+          <Route path="/pharmacy" element={<AuthGuard><Pharmacy /></AuthGuard>} />
+          <Route path="/profile" element={<AuthGuard><Profile /></AuthGuard>} />
+          <Route path="/bookings" element={<AuthGuard><Home /></AuthGuard>} />
+          <Route path="/symptom-checker" element={<AuthGuard><SymptomChecker /></AuthGuard>} />
+          <Route path="/report-analyzer" element={<AuthGuard><ReportAnalyzer /></AuthGuard>} />
+          <Route path="/medication-assistant" element={<AuthGuard><MedicationAssistant /></AuthGuard>} />
+          <Route path="/health-records" element={<AuthGuard><HealthRecords /></AuthGuard>} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

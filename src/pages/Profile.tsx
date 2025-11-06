@@ -3,9 +3,33 @@ import { Card } from "@/components/ui/card";
 import BottomNav from "@/components/BottomNav";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { authService } from "@/services/authService";
+import { toast } from "sonner";
+import { useEffect, useState } from "react";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(authService.getUser());
+
+  useEffect(() => {
+    // Update user data when component mounts
+    const currentUser = authService.getUser();
+    setUser(currentUser);
+  }, []);
+
+  const handleLogout = () => {
+    authService.logout();
+    toast.success("Logged out successfully");
+    navigate("/signin");
+  };
+
+  const handleMenuClick = (item: any) => {
+    if (item.label === "Logout") {
+      handleLogout();
+    } else {
+      navigate(item.path);
+    }
+  };
 
   const menuItems = [
     { icon: Activity, label: "My Saved", path: "/saved" },
@@ -25,11 +49,15 @@ const Profile = () => {
         <Card className="p-6 shadow-lg">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
-              JD
+              {user ? `${user.firstName[0]}${user.lastName[0]}` : 'U'}
             </div>
             <div>
-              <h2 className="text-lg font-bold text-foreground">John Doe</h2>
-              <p className="text-sm text-muted-foreground">john.doe@example.com</p>
+              <h2 className="text-lg font-bold text-foreground">
+                {user ? `${user.firstName} ${user.lastName}` : 'User'}
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                {user?.email || 'user@example.com'}
+              </p>
             </div>
           </div>
 
@@ -64,7 +92,7 @@ const Profile = () => {
           <Card
             key={item.label}
             className="p-4 flex items-center gap-4 cursor-pointer hover:shadow-card-hover transition-smooth"
-            onClick={() => navigate(item.path)}
+            onClick={() => handleMenuClick(item)}
           >
             <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
               item.variant === "danger" ? "bg-destructive/10" : "bg-secondary"

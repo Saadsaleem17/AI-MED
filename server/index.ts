@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { connectDB } from './config/database';
 import reportRoutes from './routes/reports';
 import authRoutes from './routes/auth';
+import ocrRoutes from './routes/ocr';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ connectDB();
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api', ocrRoutes);
 
 // Health check
 app.get('/health', (req, res) => {

@@ -14,8 +14,11 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    
     if (!email || !password) {
       toast.error("Please fill in all fields");
       return;
@@ -24,15 +27,18 @@ const SignIn = () => {
     setLoading(true);
     
     try {
-      const result = await authService.login({ email, password });
+      console.log('Attempting login with rememberMe:', rememberMe);
+      const result = await authService.login({ email, password, rememberMe });
       
       if (result.success) {
         toast.success("Signed in successfully!");
+        console.log('Login successful, rememberMe was:', rememberMe);
         navigate("/home");
       } else {
         toast.error(result.error || "Login failed");
       }
     } catch (error) {
+      console.error('Login error:', error);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -56,7 +62,7 @@ const SignIn = () => {
         </p>
 
         {/* Form */}
-        <div className="space-y-6">
+        <form onSubmit={handleSignIn} className="space-y-6">
           <div>
             <Label htmlFor="email" className="text-sm font-medium mb-2 block">
               Enter your email
@@ -96,7 +102,11 @@ const SignIn = () => {
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Checkbox id="remember" />
+              <Checkbox 
+                id="remember" 
+                checked={rememberMe}
+                onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+              />
               <Label htmlFor="remember" className="text-sm cursor-pointer">
                 Remember me
               </Label>
@@ -107,7 +117,7 @@ const SignIn = () => {
           </div>
 
           <Button 
-            onClick={handleSignIn} 
+            type="submit"
             className="w-full" 
             size="lg"
             disabled={loading}
@@ -166,7 +176,7 @@ const SignIn = () => {
               Sign in with Facebook
             </Button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

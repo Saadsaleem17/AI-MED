@@ -10,6 +10,7 @@ export interface User {
 export interface LoginData {
   email: string;
   password: string;
+  rememberMe?: boolean;
 }
 
 export interface RegisterData {
@@ -33,20 +34,42 @@ export interface AuthResponse {
 class AuthService {
   private token: string | null = null;
   private user: User | null = null;
+  private rememberMe: boolean = false;
 
   constructor() {
-    // Load token and user from localStorage on initialization
-    this.token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    if (userData) {
+    this.initializeAuth();
+  }
+
+  private initializeAuth(): void {
+    console.log('AuthService: Initializing...');
+    
+    // Check BOTH storages - localStorage first (persistent), then sessionStorage
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    const userData = localStorage.getItem('user') || sessionStorage.getItem('user');
+    const userId = localStorage.getItem('userId') || sessionStorage.getItem('userId');
+    
+    console.log('AuthService: Token found?', !!token);
+    console.log('AuthService: User data found?', !!userData);
+    
+    if (token && userData) {
+      this.token = token;
       try {
         this.user = JSON.parse(userData);
+        // Determine if rememberMe based on where token was found
+        this.rememberMe = !!localStorage.getItem('token');
+        console.log('AuthService: User loaded:', this.user?.email);
+        console.log('AuthService: Remember Me:', this.rememberMe);
       } catch (error) {
         console.error('Error parsing user data:', error);
         this.logout();
       }
+    } else {
+      console.log('AuthService: No stored credentials found');
     }
   }
+
+  // Removed automatic token validation on startup to prevent logout issues
+  // Token will be validated when actually making API calls
 
   async login(loginData: LoginData): Promise<AuthResponse> {
     try {
@@ -63,11 +86,37 @@ class AuthService {
       if (result.success && result.data) {
         this.token = result.data.token;
         this.user = result.data.user;
+        this.rememberMe = loginData.rememberMe || false;
         
-        // Store in localStorage
-        localStorage.setItem('token', this.token);
-        localStorage.setItem('user', JSON.stringify(this.user));
-        localStorage.setItem('userId', this.user.id);
+        console.log('Login successful. Remember Me:', this.rememberMe);
+        
+        // Store remember me preference
+        localStorage.setItem('rememberMe', this.rememberMe.toString());
+        
+        // Store auth data in appropriate storage
+        if (this.rememberMe) {
+          console.log('Storing in localStorage (persistent)');
+          // Persistent storage
+          localStorage.setItem('token', this.token);
+          localStorage.setItem('user', JSON.stringify(this.user));
+          localStorage.setItem('userId', this.user.id);
+          
+          // Clear session storage
+          sessionStorage.removeItem('token');
+          sessionStorage.removeItem('user');
+          sessionStorage.removeItem('userId');
+        } else {
+          console.log('Storing in sessionStorage (session only)');
+          // Session storage only
+          sessionStorage.setItem('token', this.token);
+          sessionStorage.setItem('user', JSON.stringify(this.user));
+          sessionStorage.setItem('userId', this.user.id);
+          
+          // Clear persistent storage
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          localStorage.removeItem('userId');
+        }
       }
 
       return result;
@@ -94,11 +143,15 @@ class AuthService {
       if (result.success && result.data) {
         this.token = result.data.token;
         this.user = result.data.user;
+        this.rememberMe = true; // Default to remember for new registrations
         
-        // Store in localStorage
+        console.log('Registration successful. Storing in localStorage');
+        
+        // Store in localStorage (persistent)
         localStorage.setItem('token', this.token);
         localStorage.setItem('user', JSON.stringify(this.user));
         localStorage.setItem('userId', this.user.id);
+        localStorage.setItem('rememberMe', 'true');
       }
 
       return result;
@@ -124,7 +177,14 @@ class AuthService {
 
       if (result.success) {
         this.user = result.data;
-        localStorage.setItem('user', JSON.stringify(this.user));
+        
+        // Update user data in appropriate storage
+        if (this.rememberMe) {
+          localStorage.setItem('user', JSON.stringify(this.user));
+        } else {
+          sessionStorage.setItem('user', JSON.stringify(this.user));
+        }
+        
         return this.user;
       } else {
         this.logout();
@@ -139,9 +199,35 @@ class AuthService {
   logout(): void {
     this.token = null;
     this.user = null;
+    this.rememberMe = false;
+    
+    // Clear all auth data from both storages
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('userId');
+    localStorage.removeItem('rememberMe');
+    
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('userId');
+  }
+
+  getRememberMe(): boolean {
+    return this.rememberMe;
+  }
+
+  // Check if user is authenticated and token is still valid
+  async checkAuthStatus(): Promise<boolean> {
+    if (!this.isAuthenticated()) {
+      return false;
+    }
+
+    try {
+      const user = await this.getCurrentUser();
+      return !!user;
+    } catch (error) {
+      return false;
+    }
   }
 
   getToken(): string | null {
