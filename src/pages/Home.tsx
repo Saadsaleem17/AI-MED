@@ -2,7 +2,6 @@ import { Bell, Search, Stethoscope, Pill, FolderOpen, Upload } from "lucide-reac
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import BottomNav from "@/components/BottomNav";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useNavigate } from "react-router-dom";
 
 const quickActions = [
@@ -29,10 +28,6 @@ const Home = () => {
           <button className="w-12 h-12 bg-primary-foreground/20 rounded-full flex items-center justify-center hover:bg-primary-foreground/30 transition-smooth">
             <Bell className="w-6 h-6" />
           </button>
-        </div>
-        
-        <div className="mb-4">
-          <LanguageSwitcher />
         </div>
 
         <div className="bg-primary-foreground/20 rounded-2xl p-4 mb-4">
