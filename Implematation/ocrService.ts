@@ -1,20 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
-export interface AIAnalysis {
-  summary: string;
-  keyFindings: string[];
-  parameters: Array<{
-    name: string;
-    value: string;
-    normalRange: string;
-    status: 'normal' | 'high' | 'low';
-    interpretation: string;
-  }>;
-  concerns: string[];
-  recommendations: string[];
-  disclaimer: string;
-}
-
 export interface OCRResult {
   status: 'medical_document' | 'not_medical_document' | 'unsupported_format';
   text?: string;
@@ -26,7 +11,6 @@ export interface OCRResult {
   parameters?: Array<{name: string, value: string, status: string}>;
   foundKeywords: string[];
   keywordCount: number;
-  aiAnalysis?: AIAnalysis;
   originalFilename?: string;
 }
 

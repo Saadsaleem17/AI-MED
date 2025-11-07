@@ -97,7 +97,7 @@ const ReportAnalyzer = () => {
       
       toast({
         title: "File Processed Successfully",
-        description: `Extracted text with ${Math.round(ocrResult.confidence)}% confidence`,
+        description: `Extracted text with ${Math.round(ocrResult.ocrConfidence)}% confidence`,
       });
       
     } catch (error) {
@@ -182,23 +182,31 @@ const ReportAnalyzer = () => {
       });
     }
 
-    // Use only extracted parameters - no fallback generation
-    const parameters = ocrResult.parameters || [];
+    // Use AI-generated analysis if available
+    const aiAnalysis = ocrResult.aiAnalysis;
+    
+    // Use AI parameters if available, otherwise fall back to OCR-extracted parameters
+    const parameters = aiAnalysis?.parameters || ocrResult.parameters || [];
 
-    // Generate summary based on actual extracted content
-    const summary = generateSummaryFromContent(ocrResult.text, ocrResult.reportType, parameters);
+    // Use AI summary if available, otherwise generate from content
+    const summary = aiAnalysis?.summary || generateSummaryFromContent(ocrResult.text, ocrResult.reportType, parameters);
 
     return {
       reportType: ocrResult.reportType,
       text: ocrResult.text,
       summary,
       parameters,
+      keyFindings: aiAnalysis?.keyFindings || [],
+      concerns: aiAnalysis?.concerns || [],
+      recommendations: aiAnalysis?.recommendations || [],
+      disclaimer: aiAnalysis?.disclaimer,
       patientName,
       uploadDate: new Date().toISOString(),
       ocrConfidence: ocrResult.ocrConfidence,
       medicalConfidence: ocrResult.medicalConfidence,
       isRealData: true,
-      foundKeywords: ocrResult.foundKeywords
+      foundKeywords: ocrResult.foundKeywords,
+      hasAIAnalysis: !!aiAnalysis
     };
   };
 
@@ -417,9 +425,13 @@ const ReportAnalyzer = () => {
         fileType: selectedFile?.type || 'application/pdf',
         extractedText: analysis.text,
         summary: analysis.summary,
-        parameters: analysis.parameters,
+        parameters: analysis.parameters.map((p: any) => ({
+          name: p.name,
+          value: p.value,
+          status: p.status === 'high' || p.status === 'low' ? 'abnormal' : 'normal',
+          unit: p.normalRange
+        })),
         metadata: {
-          reportDate: new Date(),
           patientName: analysis.patientName,
         },
       };
@@ -566,9 +578,27 @@ const ReportAnalyzer = () => {
             </Card>
 
             <Card className="p-5 shadow-md bg-sky-blue-light">
-              <h3 className="font-bold mb-2">AI Simplified Summary</h3>
+              <h3 className="font-bold mb-2 flex items-center gap-2">
+                <span>🤖</span> AI Simplified Summary
+              </h3>
               <p className="text-sm leading-relaxed">{analysis.summary}</p>
             </Card>
+
+            {analysis.keyFindings && analysis.keyFindings.length > 0 && (
+              <Card className="p-5 shadow-md">
+                <h3 className="font-bold mb-3 flex items-center gap-2">
+                  <span>🔍</span> Key Findings
+                </h3>
+                <ul className="space-y-2">
+                  {analysis.keyFindings.map((finding: string, idx: number) => (
+                    <li key={idx} className="text-sm flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>{finding}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            )}
 
             {analysis.parameters.length > 0 && (
               <Card className="p-5 shadow-md">

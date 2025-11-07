@@ -43,17 +43,27 @@ const upload = multer({
 // OCR endpoint
 router.post('/ocr', upload.single('file'), async (req: Request, res: Response) => {
   try {
+    console.log('OCR endpoint hit');
+    
     if (!req.file) {
+      console.error('No file in request');
       return res.status(400).json({ 
         success: false, 
         error: 'No file uploaded' 
       });
     }
 
-    console.log('Processing file:', req.file.originalname);
+    console.log('Processing file:', {
+      originalname: req.file.originalname,
+      mimetype: req.file.mimetype,
+      size: req.file.size,
+      path: req.file.path
+    });
     
     // Perform OCR
+    console.log('Calling performOCR...');
     const result = await performOCR(req.file.path, req.file.mimetype);
+    console.log('OCR result received:', result.status);
     
     // Clean up uploaded file
     fs.unlink(req.file.path, (err) => {
@@ -69,12 +79,17 @@ router.post('/ocr', upload.single('file'), async (req: Request, res: Response) =
         reportType: result.reportType,
         parameters: result.parameters,
         foundKeywords: result.foundKeywords,
+        aiAnalysis: result.aiAnalysis, // Include AI analysis
         originalFilename: req.file.originalname
       }
     });
 
   } catch (error) {
-    console.error('OCR Error:', error);
+    console.error('OCR Error Details:', {
+      message: (error as Error).message,
+      stack: (error as Error).stack,
+      error: error
+    });
     
     // Clean up file if it exists
     if (req.file) {

@@ -1,14 +1,15 @@
+import dotenv from 'dotenv';
+// Load environment variables FIRST before any other imports
+dotenv.config();
+
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { connectDB } from './config/database';
 import reportRoutes from './routes/reports';
 import authRoutes from './routes/auth';
 import ocrRoutes from './routes/ocr';
 import symptomRoutes from './routes/symptoms';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
