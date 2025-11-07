@@ -8,7 +8,7 @@ export interface OCRResult {
   medicalConfidence: number;
   isMedical?: boolean;
   reportType?: string;
-  parameters?: Array<{name: string, value: string, status: string}>;
+  parameters?: Array<{ name: string, value: string, status: string }>;
   foundKeywords: string[];
   keywordCount: number;
   originalFilename?: string;
@@ -18,7 +18,7 @@ class OCRService {
   async extractText(file: File): Promise<OCRResult> {
     try {
       console.log('Uploading file for OCR processing...');
-      
+
       const formData = new FormData();
       formData.append('file', file);
 
@@ -67,7 +67,7 @@ class OCRService {
     ];
 
     const textLower = text.toLowerCase();
-    const foundKeywords = medicalKeywords.filter(keyword => 
+    const foundKeywords = medicalKeywords.filter(keyword =>
       textLower.includes(keyword)
     );
 
@@ -76,7 +76,7 @@ class OCRService {
 
     // Determine report type based on keywords
     let reportType = 'General Medical Report';
-    
+
     if (textLower.includes('blood') || textLower.includes('hemoglobin') || textLower.includes('cbc')) {
       reportType = 'Blood Test Report';
     } else if (textLower.includes('urine') || textLower.includes('urinalysis')) {
@@ -97,8 +97,8 @@ class OCRService {
   }
 
   // Extract specific medical values from text
-  extractMedicalValues(text: string): Array<{name: string, value: string, status: string}> {
-    const parameters: Array<{name: string, value: string, status: string}> = [];
+  extractMedicalValues(text: string): Array<{ name: string, value: string, status: string }> {
+    const parameters: Array<{ name: string, value: string, status: string }> = [];
     const lines = text.split('\n');
 
     // Common medical parameter patterns

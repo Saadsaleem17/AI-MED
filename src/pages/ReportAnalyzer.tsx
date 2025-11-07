@@ -185,6 +185,9 @@ const ReportAnalyzer = () => {
     // Use AI-generated analysis if available
     const aiAnalysis = ocrResult.aiAnalysis;
     
+    // Debug: Log AI analysis to see what we're getting
+    console.log('AI Analysis received:', aiAnalysis);
+    
     // Use AI parameters if available, otherwise fall back to OCR-extracted parameters
     const parameters = aiAnalysis?.parameters || ocrResult.parameters || [];
 
@@ -597,6 +600,46 @@ const ReportAnalyzer = () => {
                     </li>
                   ))}
                 </ul>
+              </Card>
+            )}
+
+            {analysis.concerns && analysis.concerns.length > 0 && (
+              <Card className="p-5 shadow-md border-yellow-200 bg-yellow-50">
+                <h3 className="font-bold mb-3 flex items-center gap-2 text-yellow-800">
+                  <span>⚠️</span> Health Concerns
+                </h3>
+                <ul className="space-y-2">
+                  {analysis.concerns.map((concern: string, idx: number) => (
+                    <li key={idx} className="text-sm flex items-start gap-2 text-yellow-900">
+                      <span className="text-yellow-600 mt-1">•</span>
+                      <span>{concern}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            )}
+
+            {analysis.recommendations && analysis.recommendations.length > 0 && (
+              <Card className="p-5 shadow-md border-green-200 bg-green-50">
+                <h3 className="font-bold mb-3 flex items-center gap-2 text-green-800">
+                  <span>💡</span> Recommendations
+                </h3>
+                <ul className="space-y-2">
+                  {analysis.recommendations.map((rec: string, idx: number) => (
+                    <li key={idx} className="text-sm flex items-start gap-2 text-green-900">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span>{rec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            )}
+
+            {analysis.disclaimer && (
+              <Card className="p-4 shadow-md border-gray-200 bg-gray-50">
+                <p className="text-xs text-gray-600 italic">
+                  ⓘ {analysis.disclaimer}
+                </p>
               </Card>
             )}
 
