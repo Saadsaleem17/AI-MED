@@ -15,6 +15,7 @@ import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Help from "./pages/Help";
 import SymptomChecker from "./pages/SymptomChecker";
+import SymptomTracker from "./pages/SymptomTracker";
 import ReportAnalyzer from "./pages/ReportAnalyzer";
 import MedicationAssistant from "./pages/MedicationAssistant";
 import HealthRecords from "./pages/HealthRecords";
@@ -47,6 +48,7 @@ const App = () => (
           <Route path="/profile" element={<AuthGuard><Profile /></AuthGuard>} />
           <Route path="/edit-profile" element={<AuthGuard><EditProfile /></AuthGuard>} />
           <Route path="/help" element={<AuthGuard><Help /></AuthGuard>} />
+          <Route path="/symptom-tracker" element={<AuthGuard><SymptomTracker /></AuthGuard>} />
 
           <Route path="/symptom-checker" element={<AuthGuard><SymptomChecker /></AuthGuard>} />
           <Route path="/report-analyzer" element={<AuthGuard><ReportAnalyzer /></AuthGuard>} />
