@@ -32,7 +32,7 @@ const Profile = () => {
   };
 
   const menuItems = [
-    { icon: Activity, label: "My Saved", path: "/saved" },
+    { icon: Activity, label: "Symptom Tracker", path: "/symptom-tracker" },
     { icon: HelpCircle, label: "Help", path: "/help" },
     { icon: LogOut, label: "Logout", path: "/", variant: "danger" as const },
   ];
