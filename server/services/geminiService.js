@@ -26,6 +26,12 @@ async function analyzeMedicalReport(extractedText, reportType = 'General Medical
   try {
     console.log('Starting Gemini AI analysis...');
     
+    // Validate input text
+    if (!extractedText || typeof extractedText !== 'string' || extractedText.trim().length === 0) {
+      console.error('Invalid text provided to Gemini analysis');
+      throw new Error('No valid text to analyze');
+    }
+    
     const geminiModel = initializeGemini();
     
     const prompt = `You are a medical AI assistant analyzing a medical report. 
@@ -107,6 +113,12 @@ Return ONLY the JSON object, no additional text.`;
 
 async function generateHealthSummary(text) {
   try {
+    // Validate input text
+    if (!text || typeof text !== 'string' || text.trim().length === 0) {
+      console.warn('Invalid text provided to generateHealthSummary');
+      return "No text available to summarize.";
+    }
+    
     const geminiModel = initializeGemini();
     
     const prompt = `Provide a brief, clear summary of this medical information in 2-3 sentences:

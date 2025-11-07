@@ -63,7 +63,12 @@ router.post('/ocr', upload.single('file'), async (req: Request, res: Response) =
     // Perform OCR
     console.log('Calling performOCR...');
     const result = await performOCR(req.file.path, req.file.mimetype);
-    console.log('OCR result received:', result.status);
+    console.log('OCR result received:', result?.status || 'unknown');
+    
+    // Validate result
+    if (!result) {
+      throw new Error('OCR service returned no result');
+    }
     
     // Clean up uploaded file
     fs.unlink(req.file.path, (err) => {
@@ -73,13 +78,13 @@ router.post('/ocr', upload.single('file'), async (req: Request, res: Response) =
     res.json({ 
       success: true,
       data: {
-        text: result.text,
-        confidence: result.confidence,
-        isMedical: result.isMedical,
-        reportType: result.reportType,
-        parameters: result.parameters,
-        foundKeywords: result.foundKeywords,
-        aiAnalysis: result.aiAnalysis, // Include AI analysis
+        text: result.text || result.rawText || '',
+        confidence: result.ocrConfidence || result.confidence || 0,
+        isMedical: result.isMedical || false,
+        reportType: result.reportType || null,
+        parameters: result.parameters || [],
+        foundKeywords: result.foundKeywords || [],
+        aiAnalysis: result.aiAnalysis || null, // Include AI analysis
         originalFilename: req.file.originalname
       }
     });

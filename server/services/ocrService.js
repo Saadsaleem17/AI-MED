@@ -55,6 +55,16 @@ async function extractTextFromImage(path) {
 
     console.log(`OCR completed with ${confidence}% confidence`);
     console.log(`Extracted text length: ${text.length} characters`);
+    
+    // Validate text is not empty
+    if (!text || text.trim().length === 0) {
+      console.warn('OCR returned empty text');
+      return { 
+        text: 'No text could be extracted from the image. The image may be too blurry or contain no readable text.', 
+        confidence: 0 
+      };
+    }
+    
     return { text, confidence };
   } catch (error) {
     console.error('Image OCR Error Details:', {
@@ -104,19 +114,35 @@ async function extractTextFromPDF(path) {
 
 // Analyze extracted text for medical content
 function analyzeMedicalContent(text) {
+  // Add comprehensive null/undefined check
+  if (!text || typeof text !== 'string' || text.trim().length === 0) {
+    console.error('Invalid text provided to analyzeMedicalContent:', text);
+    return {
+      isMedical: false,
+      reportType: null,
+      medicalConfidence: 0,
+      foundKeywords: [],
+      keywordCount: 0
+    };
+  }
+
   const medicalKeywords = [
     'blood', 'hemoglobin', 'cbc', 'mmhg', 'mg/dl', 'pulse', 'bp', 'wbc', 'rbc',
     'diagnosis', 'glucose', 'cholesterol', 'urine', 'urinalysis', 'x-ray',
     'ecg', 'ekg', 'heart rate', 'temperature', 'bpm', 'g/dl', 'μl', 'platelet',
-    'hematocrit', 'lipid', 'triglycerides', 'hdl', 'ldl', 'creatinine'
+    'hematocrit', 'lipid', 'triglycerides', 'hdl', 'ldl', 'creatinine',
+    'chest', 'lungs', 'cardio', 'pulmonary', 'findings', 'impression', 'indication',
+    'patient', 'medical', 'clinical', 'radiology', 'radiograph', 'scan', 'ct',
+    'mri', 'ultrasound', 'biopsy', 'pathology', 'specimen', 'test', 'result'
   ];
 
-  const textLower = text.toLowerCase();
+  // Safe toLowerCase with additional check
+  const textLower = String(text).toLowerCase();
   const foundKeywords = medicalKeywords.filter(keyword =>
     textLower.includes(keyword)
   );
 
-  // Strict medical detection - need at least 2 medical keywords
+  // More lenient medical detection - need at least 2 medical keywords
   const keywordCount = foundKeywords.length;
   const isMedical = keywordCount >= 2;
   const medicalConfidence = Math.min(keywordCount / 5, 1);
@@ -131,10 +157,18 @@ function analyzeMedicalContent(text) {
       reportType = 'Urine Analysis Report';
     } else if (textLower.includes('cholesterol') || textLower.includes('lipid')) {
       reportType = 'Lipid Profile Report';
-    } else if (textLower.includes('x-ray') || textLower.includes('chest') || textLower.includes('radiolog')) {
+    } else if (textLower.includes('x-ray') || textLower.includes('radiograph') || textLower.includes('chest') && (textLower.includes('lungs') || textLower.includes('pulmonary'))) {
       reportType = 'X-Ray Report';
     } else if (textLower.includes('ecg') || textLower.includes('ekg') || textLower.includes('electrocardiogram')) {
       reportType = 'ECG Report';
+    } else if (textLower.includes('ct scan') || textLower.includes('computed tomography')) {
+      reportType = 'CT Scan Report';
+    } else if (textLower.includes('mri') || textLower.includes('magnetic resonance')) {
+      reportType = 'MRI Report';
+    } else if (textLower.includes('ultrasound') || textLower.includes('sonography')) {
+      reportType = 'Ultrasound Report';
+    } else if (textLower.includes('biopsy') || textLower.includes('pathology')) {
+      reportType = 'Pathology Report';
     } else {
       reportType = 'General Medical Report';
     }
@@ -151,6 +185,12 @@ function analyzeMedicalContent(text) {
 
 // Extract medical parameters from text
 function extractMedicalParameters(text) {
+  // Add null/undefined check
+  if (!text || typeof text !== 'string' || text.trim().length === 0) {
+    console.warn('Invalid text provided to extractMedicalParameters');
+    return [];
+  }
+
   const parameters = [];
 
   const patterns = [
@@ -189,6 +229,12 @@ module.exports = async function performOCR(filePath, fileType) {
       result = await extractTextFromPDF(filePath);
     } else {
       result = await extractTextFromImage(filePath);
+    }
+
+    // Validate result has text
+    if (!result || !result.text || typeof result.text !== 'string') {
+      console.error('OCR returned invalid result:', result);
+      throw new Error('OCR failed to extract text from the document');
     }
 
     // Analyze the extracted text for medical content
