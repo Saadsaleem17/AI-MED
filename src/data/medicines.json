@@ -1,0 +1,1561 @@
+[
+  {
+    "id": "paracetamol",
+    "brand_name": "Paracetamol",
+    "generic_name": "Paracetamol (Acetaminophen)",
+    "components": [
+      { "name": "Paracetamol", "class": "Analgesic, Antipyretic", "role": "Pain relief, Fever reduction" }
+    ],
+    "purpose": "Relief from fever and mild to moderate pain",
+    "how_it_works": "Acts on the hypothalamus to reduce fever and blocks pain signals in the central nervous system.",
+    "common_uses": ["Fever", "Headache", "Body ache", "Cold and flu symptoms", "Post-vaccination fever"],
+    "common_side_effects": ["Rare at recommended doses", "Nausea (uncommon)", "Allergic reactions (rare)"],
+    "avoid_if": ["Severe liver disease", "Alcohol dependence", "Allergic to paracetamol"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "ibuprofen",
+    "brand_name": "Ibuprofen",
+    "generic_name": "Ibuprofen",
+    "components": [
+      { "name": "Ibuprofen", "class": "NSAID", "role": "Anti-inflammatory, Pain relief, Fever reduction" }
+    ],
+    "purpose": "Relief from pain, fever, and inflammation",
+    "how_it_works": "Blocks prostaglandin production to reduce inflammation, pain, and fever.",
+    "common_uses": ["Headache", "Dental pain", "Muscle pain", "Arthritis", "Period pain", "Fever"],
+    "common_side_effects": ["Stomach upset", "Nausea", "Heartburn", "Dizziness"],
+    "avoid_if": ["Stomach ulcers", "Bleeding disorders", "Severe kidney disease", "Third trimester of pregnancy", "Allergic to NSAIDs"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "aceclofenac",
+    "brand_name": "Aceclofenac",
+    "generic_name": "Aceclofenac",
+    "components": [
+      { "name": "Aceclofenac", "class": "NSAID", "role": "Anti-inflammatory, Pain relief" }
+    ],
+    "purpose": "Relief from pain and inflammation",
+    "how_it_works": "Inhibits prostaglandin synthesis to reduce inflammation and pain.",
+    "common_uses": ["Osteoarthritis", "Rheumatoid arthritis", "Ankylosing spondylitis", "Dental pain", "Post-operative pain"],
+    "common_side_effects": ["Nausea", "Dizziness", "Stomach upset", "Diarrhea"],
+    "avoid_if": ["Stomach ulcers", "Severe heart disease", "Liver or kidney disease", "Pregnancy", "Allergic to NSAIDs"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "diclofenac",
+    "brand_name": "Diclofenac",
+    "generic_name": "Diclofenac Sodium",
+    "components": [
+      { "name": "Diclofenac", "class": "NSAID", "role": "Anti-inflammatory, Pain relief" }
+    ],
+    "purpose": "Relief from pain and inflammation",
+    "how_it_works": "Blocks prostaglandin production to reduce inflammation and pain.",
+    "common_uses": ["Arthritis", "Muscle pain", "Back pain", "Dental pain", "Sports injuries"],
+    "common_side_effects": ["Stomach upset", "Nausea", "Headache", "Dizziness"],
+    "avoid_if": ["Stomach ulcers", "Heart disease", "Severe kidney or liver disease", "Pregnancy (third trimester)", "Allergic to NSAIDs"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "etoricoxib",
+    "brand_name": "Etoricoxib",
+    "generic_name": "Etoricoxib",
+    "components": [
+      { "name": "Etoricoxib", "class": "COX-2 Inhibitor", "role": "Anti-inflammatory, Pain relief" }
+    ],
+    "purpose": "Relief from pain and inflammation with reduced stomach side effects",
+    "how_it_works": "Selectively blocks COX-2 enzyme to reduce inflammation while sparing stomach-protective COX-1.",
+    "common_uses": ["Osteoarthritis", "Rheumatoid arthritis", "Ankylosing spondylitis", "Gout", "Acute pain"],
+    "common_side_effects": ["Headache", "Dizziness", "Swelling", "High blood pressure"],
+    "avoid_if": ["Heart disease", "High blood pressure (uncontrolled)", "Stroke history", "Inflammatory bowel disease", "Pregnancy"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "European Medicines Agency"]
+  },
+  {
+    "id": "naproxen",
+    "brand_name": "Naproxen",
+    "generic_name": "Naproxen",
+    "components": [
+      { "name": "Naproxen", "class": "NSAID", "role": "Anti-inflammatory, Pain relief" }
+    ],
+    "purpose": "Long-lasting relief from pain and inflammation",
+    "how_it_works": "Blocks prostaglandin production with extended duration of action.",
+    "common_uses": ["Arthritis", "Muscle pain", "Tendonitis", "Gout", "Period pain"],
+    "common_side_effects": ["Stomach upset", "Heartburn", "Headache", "Drowsiness"],
+    "avoid_if": ["Stomach ulcers", "Heart disease", "Severe kidney disease", "Third trimester of pregnancy", "Allergic to NSAIDs"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "tramadol",
+    "brand_name": "Tramadol",
+    "generic_name": "Tramadol Hydrochloride",
+    "components": [
+      { "name": "Tramadol", "class": "Opioid Analgesic", "role": "Moderate to severe pain relief" }
+    ],
+    "purpose": "Relief from moderate to severe pain",
+    "how_it_works": "Acts on opioid receptors and inhibits neurotransmitter reuptake to reduce pain perception.",
+    "common_uses": ["Post-operative pain", "Chronic pain", "Cancer pain", "Severe injury pain"],
+    "common_side_effects": ["Nausea", "Dizziness", "Drowsiness", "Constipation", "Headache"],
+    "avoid_if": ["Respiratory depression", "Acute alcohol intoxication", "Seizure disorders", "MAO inhibitor use", "Children under 12"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Risk of dependence.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "nimesulide",
+    "brand_name": "Nimesulide",
+    "generic_name": "Nimesulide",
+    "components": [
+      { "name": "Nimesulide", "class": "NSAID", "role": "Anti-inflammatory, Pain relief, Fever reduction" }
+    ],
+    "purpose": "Relief from pain, fever, and inflammation",
+    "how_it_works": "Selectively inhibits COX-2 enzyme to reduce inflammation and pain.",
+    "common_uses": ["Acute pain", "Osteoarthritis", "Fever", "Dental pain", "Period pain"],
+    "common_side_effects": ["Nausea", "Diarrhea", "Stomach upset", "Dizziness"],
+    "avoid_if": ["Liver disease", "Stomach ulcers", "Children under 12", "Pregnancy", "Allergic to NSAIDs"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Not for children under 12.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "dolo-650",
+    "brand_name": "Dolo 650",
+    "generic_name": "Paracetamol 650mg",
+    "components": [
+      { "name": "Paracetamol", "class": "Analgesic, Antipyretic", "role": "Pain relief, Fever reduction" }
+    ],
+    "purpose": "Relief from fever and mild to moderate pain",
+    "how_it_works": "Acts on the hypothalamus to reduce fever and blocks pain signals in the central nervous system.",
+    "common_uses": ["Fever", "Headache", "Body ache", "Cold and flu symptoms", "Post-vaccination fever"],
+    "common_side_effects": ["Rare at recommended doses", "Nausea (uncommon)", "Allergic reactions (rare)"],
+    "avoid_if": ["Severe liver disease", "Alcohol dependence", "Allergic to paracetamol"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "combiflam",
+    "brand_name": "Combiflam",
+    "generic_name": "Ibuprofen + Paracetamol",
+    "components": [
+      { "name": "Ibuprofen", "class": "NSAID", "role": "Anti-inflammatory, Pain relief" },
+      { "name": "Paracetamol", "class": "Analgesic, Antipyretic", "role": "Pain relief, Fever reduction" }
+    ],
+    "purpose": "Relief from pain and fever",
+    "how_it_works": "Ibuprofen reduces inflammation by blocking prostaglandin production. Paracetamol acts on the brain's pain and temperature centers.",
+    "common_uses": ["Headache and migraine", "Dental pain", "Muscle pain", "Fever", "Period pain"],
+    "common_side_effects": ["Nausea", "Stomach upset", "Dizziness", "Heartburn"],
+    "avoid_if": ["Stomach ulcers or bleeding disorders", "Severe liver or kidney disease", "Allergic to NSAIDs", "Third trimester of pregnancy"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia Commission"]
+  }
+,
+  {
+    "id": "volini-gel",
+    "brand_name": "Volini",
+    "generic_name": "Diclofenac + Methyl Salicylate + Menthol",
+    "components": [
+      { "name": "Diclofenac", "class": "NSAID", "role": "Anti-inflammatory, Pain relief" },
+      { "name": "Methyl Salicylate", "class": "Topical Analgesic", "role": "Pain relief" },
+      { "name": "Menthol", "class": "Cooling agent", "role": "Soothing effect" }
+    ],
+    "purpose": "Topical relief from muscle and joint pain",
+    "how_it_works": "Diclofenac penetrates skin to reduce inflammation, while other ingredients provide immediate cooling relief.",
+    "common_uses": ["Muscle pain", "Joint pain", "Back pain", "Sports injuries", "Arthritis pain"],
+    "common_side_effects": ["Skin redness", "Itching", "Rash", "Burning sensation"],
+    "avoid_if": ["Broken or damaged skin", "Allergic to NSAIDs", "Pregnancy (third trimester)", "Children under 14 years"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "European Medicines Agency"]
+  },
+  {
+    "id": "moov",
+    "brand_name": "Moov",
+    "generic_name": "Diclofenac + Menthol + Linseed Oil",
+    "components": [
+      { "name": "Diclofenac", "class": "NSAID", "role": "Anti-inflammatory" },
+      { "name": "Menthol", "class": "Cooling agent", "role": "Pain relief" },
+      { "name": "Linseed Oil", "class": "Natural oil", "role": "Skin penetration" }
+    ],
+    "purpose": "Topical relief from muscle and joint pain",
+    "how_it_works": "Provides anti-inflammatory action with cooling sensation for pain relief.",
+    "common_uses": ["Muscle pain", "Back pain", "Joint pain", "Sprains", "Strains"],
+    "common_side_effects": ["Skin irritation", "Redness", "Itching (rare)"],
+    "avoid_if": ["Broken skin", "Allergic to NSAIDs", "Children under 12 years"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "zandu-balm",
+    "brand_name": "Zandu Balm",
+    "generic_name": "Menthol + Camphor + Herbal Oils",
+    "components": [
+      { "name": "Menthol", "class": "Topical Analgesic", "role": "Cooling sensation, Pain relief" },
+      { "name": "Camphor", "class": "Topical Analgesic", "role": "Warming sensation, Pain relief" },
+      { "name": "Herbal Oils", "class": "Natural extracts", "role": "Soothing effect" }
+    ],
+    "purpose": "Topical relief from headache and body pain",
+    "how_it_works": "Creates counter-irritation effect that distracts from pain, improves blood circulation.",
+    "common_uses": ["Headache", "Muscle pain", "Joint pain", "Cold symptoms", "Minor sprains"],
+    "common_side_effects": ["Skin irritation (rare)", "Burning sensation if applied excessively", "Allergic reactions (rare)"],
+    "avoid_if": ["Broken or damaged skin", "Near eyes or mucous membranes", "Children under 2 years", "Allergic to menthol or camphor"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Ayurvedic Pharmacopoeia of India"]
+  },
+  {
+    "id": "iodex",
+    "brand_name": "Iodex",
+    "generic_name": "Iodine + Methyl Salicylate",
+    "components": [
+      { "name": "Iodine", "class": "Antiseptic", "role": "Antimicrobial" },
+      { "name": "Methyl Salicylate", "class": "Topical Analgesic", "role": "Pain relief" }
+    ],
+    "purpose": "Topical relief from muscle and joint pain",
+    "how_it_works": "Provides pain relief and antimicrobial action for minor injuries.",
+    "common_uses": ["Muscle pain", "Joint pain", "Sprains", "Strains", "Minor injuries"],
+    "common_side_effects": ["Skin staining", "Irritation", "Allergic reactions (rare)"],
+    "avoid_if": ["Iodine allergy", "Thyroid disorders", "Broken skin", "Children under 2 years"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "vicks-balm",
+    "brand_name": "Vicks Balm",
+    "generic_name": "Camphor + Menthol + Eucalyptus Oil",
+    "components": [
+      { "name": "Camphor", "class": "Topical Analgesic", "role": "Pain relief" },
+      { "name": "Menthol", "class": "Cooling agent", "role": "Soothing effect" },
+      { "name": "Eucalyptus Oil", "class": "Essential Oil", "role": "Decongestant" }
+    ],
+    "purpose": "Relief from cold symptoms and body aches",
+    "how_it_works": "Provides cooling sensation and helps open airways.",
+    "common_uses": ["Cold symptoms", "Headache", "Muscle aches", "Nasal congestion"],
+    "common_side_effects": ["Skin irritation (rare)", "Burning sensation"],
+    "avoid_if": ["Children under 2 years", "Broken skin", "Near eyes"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "cetirizine",
+    "brand_name": "Cetirizine",
+    "generic_name": "Cetirizine Hydrochloride",
+    "components": [
+      { "name": "Cetirizine", "class": "Antihistamine", "role": "Allergy relief" }
+    ],
+    "purpose": "Relief from allergic symptoms",
+    "how_it_works": "Blocks histamine receptors to prevent allergic reactions like itching, sneezing, and runny nose.",
+    "common_uses": ["Seasonal allergies (hay fever)", "Skin allergies and itching", "Hives", "Allergic rhinitis", "Insect bite reactions"],
+    "common_side_effects": ["Drowsiness", "Dry mouth", "Fatigue", "Headache"],
+    "avoid_if": ["Severe kidney disease", "Allergic to cetirizine", "Operating heavy machinery (may cause drowsiness)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "levocetirizine",
+    "brand_name": "Levocetirizine",
+    "generic_name": "Levocetirizine Dihydrochloride",
+    "components": [
+      { "name": "Levocetirizine", "class": "Antihistamine", "role": "Allergy relief" }
+    ],
+    "purpose": "Relief from allergic symptoms with less drowsiness",
+    "how_it_works": "Active isomer of cetirizine that blocks histamine receptors more effectively.",
+    "common_uses": ["Allergic rhinitis", "Chronic urticaria", "Skin allergies", "Seasonal allergies"],
+    "common_side_effects": ["Drowsiness (mild)", "Dry mouth", "Fatigue", "Headache"],
+    "avoid_if": ["Severe kidney disease", "End-stage renal disease", "Children under 6 months"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "European Medicines Agency"]
+  },
+  {
+    "id": "loratadine",
+    "brand_name": "Loratadine",
+    "generic_name": "Loratadine",
+    "components": [
+      { "name": "Loratadine", "class": "Antihistamine", "role": "Allergy relief" }
+    ],
+    "purpose": "Non-drowsy relief from allergic symptoms",
+    "how_it_works": "Blocks peripheral histamine receptors without crossing blood-brain barrier significantly.",
+    "common_uses": ["Seasonal allergies", "Allergic rhinitis", "Hives", "Skin allergies"],
+    "common_side_effects": ["Headache", "Dry mouth", "Fatigue (rare)", "Minimal drowsiness"],
+    "avoid_if": ["Severe liver disease", "Allergic to loratadine", "Children under 2 years"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "fexofenadine",
+    "brand_name": "Allegra (Fexofenadine)",
+    "generic_name": "Fexofenadine",
+    "components": [
+      { "name": "Fexofenadine", "class": "Antihistamine", "role": "Allergy relief" }
+    ],
+    "purpose": "Relief from allergic symptoms without drowsiness",
+    "how_it_works": "Blocks histamine receptors to prevent allergic reactions, non-sedating formula.",
+    "common_uses": ["Seasonal allergies", "Chronic hives", "Allergic rhinitis", "Skin allergies", "Pollen allergies"],
+    "common_side_effects": ["Headache", "Nausea", "Dizziness (rare)", "Minimal drowsiness"],
+    "avoid_if": ["Severe kidney disease", "Allergic to fexofenadine", "Children under 6 years"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "phenylephrine",
+    "brand_name": "Phenylephrine",
+    "generic_name": "Phenylephrine Hydrochloride",
+    "components": [
+      { "name": "Phenylephrine", "class": "Decongestant", "role": "Nasal congestion relief" }
+    ],
+    "purpose": "Relief from nasal congestion",
+    "how_it_works": "Constricts blood vessels in nasal passages to reduce swelling and congestion.",
+    "common_uses": ["Nasal congestion", "Common cold", "Sinusitis", "Allergic rhinitis"],
+    "common_side_effects": ["Nervousness", "Dizziness", "Insomnia", "Increased blood pressure"],
+    "avoid_if": ["High blood pressure", "Heart disease", "Thyroid disorders", "Diabetes", "Prostate enlargement"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  }
+,
+  {
+    "id": "oxymetazoline",
+    "brand_name": "Oxymetazoline Nasal Spray",
+    "generic_name": "Oxymetazoline",
+    "components": [
+      { "name": "Oxymetazoline", "class": "Decongestant", "role": "Nasal congestion relief" }
+    ],
+    "purpose": "Fast relief from nasal congestion",
+    "how_it_works": "Constricts blood vessels in nasal passages for rapid decongestion.",
+    "common_uses": ["Nasal congestion", "Common cold", "Sinusitis", "Allergic rhinitis"],
+    "common_side_effects": ["Nasal dryness", "Burning sensation", "Sneezing", "Rebound congestion if overused"],
+    "avoid_if": ["Narrow-angle glaucoma", "Children under 6 years", "Use beyond 3-5 days"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Do not use for more than 3-5 days.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "montelukast",
+    "brand_name": "Montelukast",
+    "generic_name": "Montelukast Sodium",
+    "components": [
+      { "name": "Montelukast", "class": "Leukotriene Receptor Antagonist", "role": "Allergy and asthma control" }
+    ],
+    "purpose": "Prevention of asthma and allergic rhinitis symptoms",
+    "how_it_works": "Blocks leukotriene receptors to reduce inflammation and allergic responses.",
+    "common_uses": ["Asthma prevention", "Allergic rhinitis", "Exercise-induced bronchoconstriction"],
+    "common_side_effects": ["Headache", "Stomach upset", "Fatigue", "Mood changes (rare)"],
+    "avoid_if": ["Allergic to montelukast", "Acute asthma attack (not for immediate relief)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Not for acute asthma attacks.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "sinarest",
+    "brand_name": "Sinarest",
+    "generic_name": "Paracetamol + Phenylephrine + Chlorpheniramine",
+    "components": [
+      { "name": "Paracetamol", "class": "Analgesic, Antipyretic", "role": "Pain and fever relief" },
+      { "name": "Phenylephrine", "class": "Decongestant", "role": "Nasal congestion relief" },
+      { "name": "Chlorpheniramine", "class": "Antihistamine", "role": "Allergy relief" }
+    ],
+    "purpose": "Multi-symptom cold and flu relief",
+    "how_it_works": "Combination targets fever, congestion, and allergic symptoms simultaneously.",
+    "common_uses": ["Common cold", "Flu", "Nasal congestion", "Headache", "Body ache"],
+    "common_side_effects": ["Drowsiness", "Dry mouth", "Dizziness", "Nausea"],
+    "avoid_if": ["High blood pressure", "Heart disease", "Thyroid disorders", "Operating machinery"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "rinza",
+    "brand_name": "Rinza",
+    "generic_name": "Paracetamol + Phenylephrine + Chlorpheniramine + Caffeine",
+    "components": [
+      { "name": "Paracetamol", "class": "Analgesic, Antipyretic", "role": "Pain and fever relief" },
+      { "name": "Phenylephrine", "class": "Decongestant", "role": "Relieves nasal congestion" },
+      { "name": "Chlorpheniramine", "class": "Antihistamine", "role": "Reduces runny nose and sneezing" },
+      { "name": "Caffeine", "class": "Stimulant", "role": "Reduces drowsiness" }
+    ],
+    "purpose": "Relief from cold and flu symptoms",
+    "how_it_works": "Multi-symptom formula targets fever, congestion, runny nose, and body ache simultaneously.",
+    "common_uses": ["Common cold", "Flu symptoms", "Nasal congestion", "Headache with cold", "Body ache from cold"],
+    "common_side_effects": ["Drowsiness", "Dry mouth", "Dizziness", "Nausea"],
+    "avoid_if": ["High blood pressure", "Heart disease", "Thyroid disorders", "Prostate enlargement", "Operating machinery"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "benadryl",
+    "brand_name": "Benadryl",
+    "generic_name": "Diphenhydramine",
+    "components": [
+      { "name": "Diphenhydramine", "class": "Antihistamine", "role": "Allergy relief, Cough suppressant" }
+    ],
+    "purpose": "Relief from allergies and cough",
+    "how_it_works": "Blocks histamine to reduce allergic symptoms and suppresses cough reflex in the brain.",
+    "common_uses": ["Allergic reactions", "Hay fever", "Dry cough", "Insomnia (short-term)", "Motion sickness"],
+    "common_side_effects": ["Drowsiness (significant)", "Dry mouth", "Dizziness", "Blurred vision"],
+    "avoid_if": ["Glaucoma", "Prostate enlargement", "Asthma or breathing problems", "Operating vehicles or machinery"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Causes significant drowsiness.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "vicks-vaporub",
+    "brand_name": "Vicks Vaporub",
+    "generic_name": "Camphor + Menthol + Eucalyptus Oil",
+    "components": [
+      { "name": "Camphor", "class": "Topical Analgesic", "role": "Cough suppressant, Pain relief" },
+      { "name": "Menthol", "class": "Decongestant", "role": "Opens airways" },
+      { "name": "Eucalyptus Oil", "class": "Essential Oil", "role": "Decongestant" }
+    ],
+    "purpose": "Relief from cough and cold symptoms",
+    "how_it_works": "Vapors help open nasal passages and suppress cough reflex, topical application provides soothing warmth.",
+    "common_uses": ["Nasal congestion", "Cough", "Cold symptoms", "Chest congestion", "Minor muscle aches"],
+    "common_side_effects": ["Skin irritation (rare)", "Burning sensation if applied excessively", "Eye irritation if contact occurs"],
+    "avoid_if": ["Children under 2 years", "Broken skin or wounds", "Face or nostrils (direct application)", "Asthma (may trigger symptoms)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "otrivin",
+    "brand_name": "Otrivin",
+    "generic_name": "Xylometazoline",
+    "components": [
+      { "name": "Xylometazoline", "class": "Decongestant", "role": "Nasal congestion relief" }
+    ],
+    "purpose": "Fast relief from nasal congestion",
+    "how_it_works": "Constricts blood vessels in nasal passages to reduce swelling.",
+    "common_uses": ["Nasal congestion", "Common cold", "Sinusitis", "Allergic rhinitis"],
+    "common_side_effects": ["Nasal dryness", "Burning", "Sneezing", "Rebound congestion if overused"],
+    "avoid_if": ["Children under 6 years", "Narrow-angle glaucoma", "Use beyond 5-7 days"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Do not use for more than 5-7 days.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "European Medicines Agency"]
+  },
+  {
+    "id": "pantoprazole",
+    "brand_name": "Pantoprazole",
+    "generic_name": "Pantoprazole Sodium",
+    "components": [
+      { "name": "Pantoprazole", "class": "Proton Pump Inhibitor", "role": "Reduces stomach acid production" }
+    ],
+    "purpose": "Treatment of acid-related disorders",
+    "how_it_works": "Blocks the proton pump in stomach cells to reduce acid production.",
+    "common_uses": ["GERD", "Peptic ulcers", "Erosive esophagitis", "Zollinger-Ellison syndrome"],
+    "common_side_effects": ["Headache", "Diarrhea", "Nausea", "Stomach pain"],
+    "avoid_if": ["Allergic to pantoprazole", "Severe liver disease", "Long-term use without medical supervision"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "omeprazole",
+    "brand_name": "Omeprazole",
+    "generic_name": "Omeprazole",
+    "components": [
+      { "name": "Omeprazole", "class": "Proton Pump Inhibitor", "role": "Reduces stomach acid production" }
+    ],
+    "purpose": "Treatment of acid-related disorders",
+    "how_it_works": "Blocks the proton pump in stomach cells to reduce acid secretion.",
+    "common_uses": ["GERD", "Peptic ulcers", "Heartburn", "Erosive esophagitis", "H. pylori infection (with antibiotics)"],
+    "common_side_effects": ["Headache", "Diarrhea", "Nausea", "Stomach pain", "Gas"],
+    "avoid_if": ["Allergic to omeprazole", "Severe liver disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "esomeprazole",
+    "brand_name": "Esomeprazole",
+    "generic_name": "Esomeprazole Magnesium",
+    "components": [
+      { "name": "Esomeprazole", "class": "Proton Pump Inhibitor", "role": "Reduces stomach acid production" }
+    ],
+    "purpose": "Treatment of acid-related disorders",
+    "how_it_works": "Active isomer of omeprazole that blocks proton pump more effectively.",
+    "common_uses": ["GERD", "Peptic ulcers", "Erosive esophagitis", "Heartburn"],
+    "common_side_effects": ["Headache", "Diarrhea", "Nausea", "Flatulence"],
+    "avoid_if": ["Allergic to esomeprazole", "Severe liver disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  }
+,
+  {
+    "id": "ranitidine",
+    "brand_name": "Ranitidine",
+    "generic_name": "Ranitidine Hydrochloride",
+    "components": [
+      { "name": "Ranitidine", "class": "H2 Blocker", "role": "Reduces stomach acid production" }
+    ],
+    "purpose": "Relief from acidity and heartburn",
+    "how_it_works": "Blocks histamine receptors in the stomach to reduce acid production.",
+    "common_uses": ["Heartburn", "Acid reflux", "Peptic ulcers", "GERD symptoms", "Excess stomach acid"],
+    "common_side_effects": ["Headache", "Dizziness", "Constipation or diarrhea", "Fatigue"],
+    "avoid_if": ["Allergic to ranitidine", "Severe kidney or liver disease", "Porphyria"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Note: Some countries have restricted ranitidine - check local regulations.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "gelusil",
+    "brand_name": "Gelusil",
+    "generic_name": "Aluminium Hydroxide + Magnesium Hydroxide",
+    "components": [
+      { "name": "Aluminium Hydroxide", "class": "Antacid", "role": "Neutralizes stomach acid" },
+      { "name": "Magnesium Hydroxide", "class": "Antacid", "role": "Neutralizes stomach acid" }
+    ],
+    "purpose": "Relief from acidity and heartburn",
+    "how_it_works": "Neutralizes excess stomach acid, providing quick relief from discomfort.",
+    "common_uses": ["Heartburn", "Acidity", "Indigestion", "Stomach upset", "Gastritis"],
+    "common_side_effects": ["Constipation (aluminium)", "Diarrhea (magnesium)", "Chalky taste"],
+    "avoid_if": ["Severe kidney disease", "Intestinal blockage", "Allergic to components"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "digene",
+    "brand_name": "Digene",
+    "generic_name": "Aluminium Hydroxide + Magnesium Hydroxide + Simethicone",
+    "components": [
+      { "name": "Aluminium Hydroxide", "class": "Antacid", "role": "Neutralizes stomach acid" },
+      { "name": "Magnesium Hydroxide", "class": "Antacid", "role": "Neutralizes stomach acid" },
+      { "name": "Simethicone", "class": "Anti-foaming agent", "role": "Reduces gas and bloating" }
+    ],
+    "purpose": "Relief from acidity, heartburn, and gas",
+    "how_it_works": "Neutralizes excess stomach acid and breaks down gas bubbles in the digestive system.",
+    "common_uses": ["Heartburn", "Acidity", "Indigestion", "Gas and bloating", "Stomach discomfort"],
+    "common_side_effects": ["Constipation (aluminium)", "Diarrhea (magnesium)", "Chalky taste"],
+    "avoid_if": ["Severe kidney disease", "Intestinal blockage", "Allergic to components"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "eno",
+    "brand_name": "Eno",
+    "generic_name": "Sodium Bicarbonate + Citric Acid",
+    "components": [
+      { "name": "Sodium Bicarbonate", "class": "Antacid", "role": "Neutralizes stomach acid" },
+      { "name": "Citric Acid", "class": "Acidulant", "role": "Creates effervescence" }
+    ],
+    "purpose": "Fast relief from acidity and indigestion",
+    "how_it_works": "Rapidly neutralizes excess stomach acid through effervescent action.",
+    "common_uses": ["Acidity", "Heartburn", "Indigestion", "Upset stomach", "Bloating"],
+    "common_side_effects": ["Belching", "Gas", "Stomach distension (if overused)"],
+    "avoid_if": ["High blood pressure (contains sodium)", "Kidney disease", "Heart disease", "Fluid retention"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. High sodium content.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "ors",
+    "brand_name": "ORS (Oral Rehydration Solution)",
+    "generic_name": "Sodium Chloride + Potassium Chloride + Glucose",
+    "components": [
+      { "name": "Sodium Chloride", "class": "Electrolyte", "role": "Restores sodium levels" },
+      { "name": "Potassium Chloride", "class": "Electrolyte", "role": "Restores potassium levels" },
+      { "name": "Glucose", "class": "Carbohydrate", "role": "Aids electrolyte absorption" }
+    ],
+    "purpose": "Prevents and treats dehydration",
+    "how_it_works": "Replaces lost fluids and electrolytes, glucose helps the intestine absorb sodium and water efficiently.",
+    "common_uses": ["Diarrhea", "Vomiting", "Dehydration from heat", "Post-exercise rehydration", "Cholera"],
+    "common_side_effects": ["Rare at recommended doses", "Nausea if consumed too quickly"],
+    "avoid_if": ["Severe kidney disease", "Intestinal blockage", "Uncontrolled vomiting"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["WHO - World Health Organization", "UNICEF Rehydration Guidelines"]
+  },
+  {
+    "id": "electral",
+    "brand_name": "Electral",
+    "generic_name": "Oral Rehydration Salts",
+    "components": [
+      { "name": "Sodium Chloride", "class": "Electrolyte", "role": "Restores sodium" },
+      { "name": "Potassium Chloride", "class": "Electrolyte", "role": "Restores potassium" },
+      { "name": "Dextrose", "class": "Carbohydrate", "role": "Energy and absorption" }
+    ],
+    "purpose": "Rehydration during diarrhea and vomiting",
+    "how_it_works": "WHO-recommended formula replaces lost fluids and electrolytes efficiently.",
+    "common_uses": ["Diarrhea", "Vomiting", "Dehydration", "Heat exhaustion", "Post-exercise rehydration"],
+    "common_side_effects": ["Rare at recommended doses", "Nausea if consumed too quickly"],
+    "avoid_if": ["Severe kidney disease", "Intestinal blockage", "Hyperkalemia"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["WHO - World Health Organization", "CDSCO - Central Drugs Standard Control Organisation"]
+  },
+  {
+    "id": "loperamide",
+    "brand_name": "Loperamide",
+    "generic_name": "Loperamide Hydrochloride",
+    "components": [
+      { "name": "Loperamide", "class": "Antidiarrheal", "role": "Slows intestinal movement" }
+    ],
+    "purpose": "Relief from diarrhea",
+    "how_it_works": "Slows intestinal motility to reduce frequency of bowel movements.",
+    "common_uses": ["Acute diarrhea", "Chronic diarrhea", "Traveler's diarrhea"],
+    "common_side_effects": ["Constipation", "Dizziness", "Nausea", "Stomach cramps"],
+    "avoid_if": ["Bloody diarrhea", "High fever", "Bacterial infection", "Inflammatory bowel disease", "Children under 2 years"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Not for bacterial diarrhea.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "dicyclomine",
+    "brand_name": "Dicyclomine",
+    "generic_name": "Dicyclomine Hydrochloride",
+    "components": [
+      { "name": "Dicyclomine", "class": "Antispasmodic", "role": "Relieves intestinal spasms" }
+    ],
+    "purpose": "Relief from abdominal cramps and spasms",
+    "how_it_works": "Relaxes smooth muscles in the intestines to reduce cramping.",
+    "common_uses": ["Irritable bowel syndrome", "Abdominal cramps", "Intestinal spasms", "Colic"],
+    "common_side_effects": ["Dry mouth", "Dizziness", "Blurred vision", "Drowsiness"],
+    "avoid_if": ["Glaucoma", "Myasthenia gravis", "Intestinal blockage", "Infants under 6 months"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "domperidone",
+    "brand_name": "Domperidone",
+    "generic_name": "Domperidone",
+    "components": [
+      { "name": "Domperidone", "class": "Prokinetic, Antiemetic", "role": "Prevents nausea and vomiting" }
+    ],
+    "purpose": "Relief from nausea and vomiting",
+    "how_it_works": "Blocks dopamine receptors to prevent nausea and speeds up stomach emptying.",
+    "common_uses": ["Nausea", "Vomiting", "Bloating", "Indigestion", "GERD"],
+    "common_side_effects": ["Dry mouth", "Headache", "Diarrhea", "Abdominal cramps"],
+    "avoid_if": ["Heart rhythm disorders", "Severe liver disease", "Prolactinoma", "Gastrointestinal bleeding"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "European Medicines Agency"]
+  },
+  {
+    "id": "ondansetron",
+    "brand_name": "Ondansetron",
+    "generic_name": "Ondansetron Hydrochloride",
+    "components": [
+      { "name": "Ondansetron", "class": "Antiemetic", "role": "Prevents nausea and vomiting" }
+    ],
+    "purpose": "Prevention of nausea and vomiting",
+    "how_it_works": "Blocks serotonin receptors that trigger nausea and vomiting.",
+    "common_uses": ["Chemotherapy-induced nausea", "Post-operative nausea", "Radiation therapy nausea", "Severe vomiting"],
+    "common_side_effects": ["Headache", "Constipation", "Dizziness", "Fatigue"],
+    "avoid_if": ["Allergic to ondansetron", "Congenital long QT syndrome"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  }
+,
+  {
+    "id": "rabeprazole",
+    "brand_name": "Rabeprazole",
+    "generic_name": "Rabeprazole Sodium",
+    "components": [
+      { "name": "Rabeprazole", "class": "Proton Pump Inhibitor", "role": "Reduces stomach acid" }
+    ],
+    "purpose": "Treatment of acid-related disorders",
+    "how_it_works": "Blocks proton pump to reduce stomach acid secretion.",
+    "common_uses": ["GERD", "Peptic ulcers", "Zollinger-Ellison syndrome", "Erosive esophagitis"],
+    "common_side_effects": ["Headache", "Diarrhea", "Nausea", "Abdominal pain"],
+    "avoid_if": ["Allergic to rabeprazole", "Severe liver disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "sucralfate",
+    "brand_name": "Sucralfate",
+    "generic_name": "Sucralfate",
+    "components": [
+      { "name": "Sucralfate", "class": "Gastric Protectant", "role": "Protects stomach lining" }
+    ],
+    "purpose": "Treatment and prevention of ulcers",
+    "how_it_works": "Forms protective barrier over ulcers to promote healing.",
+    "common_uses": ["Peptic ulcers", "Gastric ulcers", "Duodenal ulcers", "GERD"],
+    "common_side_effects": ["Constipation", "Dry mouth", "Nausea", "Stomach upset"],
+    "avoid_if": ["Intestinal blockage", "Difficulty swallowing"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Take on empty stomach.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "lactulose",
+    "brand_name": "Lactulose",
+    "generic_name": "Lactulose",
+    "components": [
+      { "name": "Lactulose", "class": "Laxative", "role": "Relieves constipation" }
+    ],
+    "purpose": "Treatment of constipation",
+    "how_it_works": "Draws water into intestines to soften stool and promote bowel movements.",
+    "common_uses": ["Chronic constipation", "Hepatic encephalopathy"],
+    "common_side_effects": ["Bloating", "Gas", "Abdominal cramps", "Diarrhea (if overdosed)"],
+    "avoid_if": ["Galactosemia", "Intestinal blockage", "Lactose intolerance"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "cremaffin",
+    "brand_name": "Cremaffin",
+    "generic_name": "Liquid Paraffin + Milk of Magnesia",
+    "components": [
+      { "name": "Liquid Paraffin", "class": "Lubricant Laxative", "role": "Softens stool" },
+      { "name": "Milk of Magnesia", "class": "Osmotic Laxative", "role": "Draws water into intestines" }
+    ],
+    "purpose": "Relief from constipation",
+    "how_it_works": "Lubricates and softens stool while drawing water into intestines.",
+    "common_uses": ["Constipation", "Hard stools", "Irregular bowel movements"],
+    "common_side_effects": ["Abdominal cramps", "Diarrhea (if overdosed)", "Nausea"],
+    "avoid_if": ["Intestinal blockage", "Abdominal pain", "Nausea or vomiting"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "amoxicillin",
+    "brand_name": "Amoxicillin",
+    "generic_name": "Amoxicillin",
+    "components": [
+      { "name": "Amoxicillin", "class": "Penicillin Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial infections",
+    "how_it_works": "Inhibits bacterial cell wall synthesis, killing susceptible bacteria.",
+    "common_uses": ["Respiratory infections", "Ear infections", "Urinary tract infections", "Skin infections", "Dental infections"],
+    "common_side_effects": ["Nausea", "Diarrhea", "Rash", "Stomach upset"],
+    "avoid_if": ["Penicillin allergy", "Mononucleosis", "Severe kidney disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Complete full course.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "azithromycin",
+    "brand_name": "Azithromycin",
+    "generic_name": "Azithromycin",
+    "components": [
+      { "name": "Azithromycin", "class": "Macrolide Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial infections",
+    "how_it_works": "Inhibits bacterial protein synthesis to stop bacterial growth.",
+    "common_uses": ["Respiratory infections", "Skin infections", "Ear infections", "Sexually transmitted infections", "Typhoid"],
+    "common_side_effects": ["Nausea", "Diarrhea", "Abdominal pain", "Headache"],
+    "avoid_if": ["Allergic to macrolides", "Severe liver disease", "Heart rhythm disorders"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "doxycycline",
+    "brand_name": "Doxycycline",
+    "generic_name": "Doxycycline",
+    "components": [
+      { "name": "Doxycycline", "class": "Tetracycline Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial infections",
+    "how_it_works": "Inhibits bacterial protein synthesis to prevent bacterial growth.",
+    "common_uses": ["Respiratory infections", "Acne", "Malaria prevention", "Lyme disease", "Urinary tract infections"],
+    "common_side_effects": ["Nausea", "Photosensitivity", "Diarrhea", "Stomach upset"],
+    "avoid_if": ["Pregnancy", "Children under 8 years", "Severe liver disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Avoid sun exposure.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "ciprofloxacin",
+    "brand_name": "Ciprofloxacin",
+    "generic_name": "Ciprofloxacin",
+    "components": [
+      { "name": "Ciprofloxacin", "class": "Fluoroquinolone Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial infections",
+    "how_it_works": "Inhibits bacterial DNA replication to kill bacteria.",
+    "common_uses": ["Urinary tract infections", "Respiratory infections", "Skin infections", "Bone infections", "Typhoid"],
+    "common_side_effects": ["Nausea", "Diarrhea", "Dizziness", "Headache"],
+    "avoid_if": ["Tendon disorders", "Myasthenia gravis", "Children (except specific cases)", "Pregnancy"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Risk of tendon rupture.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "cefixime",
+    "brand_name": "Cefixime",
+    "generic_name": "Cefixime",
+    "components": [
+      { "name": "Cefixime", "class": "Cephalosporin Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial infections",
+    "how_it_works": "Inhibits bacterial cell wall synthesis to kill bacteria.",
+    "common_uses": ["Respiratory infections", "Urinary tract infections", "Ear infections", "Typhoid", "Gonorrhea"],
+    "common_side_effects": ["Diarrhea", "Nausea", "Stomach pain", "Headache"],
+    "avoid_if": ["Cephalosporin allergy", "Severe kidney disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "cefpodoxime",
+    "brand_name": "Cefpodoxime",
+    "generic_name": "Cefpodoxime Proxetil",
+    "components": [
+      { "name": "Cefpodoxime", "class": "Cephalosporin Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial infections",
+    "how_it_works": "Inhibits bacterial cell wall synthesis.",
+    "common_uses": ["Respiratory infections", "Urinary tract infections", "Skin infections", "Ear infections"],
+    "common_side_effects": ["Diarrhea", "Nausea", "Abdominal pain", "Headache"],
+    "avoid_if": ["Cephalosporin allergy", "Severe kidney disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  }
+,
+  {
+    "id": "metronidazole",
+    "brand_name": "Metronidazole",
+    "generic_name": "Metronidazole",
+    "components": [
+      { "name": "Metronidazole", "class": "Antibiotic, Antiprotozoal", "role": "Kills bacteria and parasites" }
+    ],
+    "purpose": "Treatment of bacterial and parasitic infections",
+    "how_it_works": "Damages bacterial and parasitic DNA to kill organisms.",
+    "common_uses": ["Bacterial vaginosis", "Dental infections", "Amoebic dysentery", "Giardiasis", "H. pylori infection"],
+    "common_side_effects": ["Nausea", "Metallic taste", "Headache", "Dark urine"],
+    "avoid_if": ["First trimester of pregnancy", "Alcohol consumption", "Blood disorders"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Avoid alcohol.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "clarithromycin",
+    "brand_name": "Clarithromycin",
+    "generic_name": "Clarithromycin",
+    "components": [
+      { "name": "Clarithromycin", "class": "Macrolide Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial infections",
+    "how_it_works": "Inhibits bacterial protein synthesis.",
+    "common_uses": ["Respiratory infections", "Skin infections", "H. pylori infection", "Ear infections"],
+    "common_side_effects": ["Nausea", "Diarrhea", "Abnormal taste", "Headache"],
+    "avoid_if": ["Allergic to macrolides", "Severe liver disease", "Heart rhythm disorders"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "cephalexin",
+    "brand_name": "Cephalexin",
+    "generic_name": "Cephalexin",
+    "components": [
+      { "name": "Cephalexin", "class": "Cephalosporin Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial infections",
+    "how_it_works": "Inhibits bacterial cell wall synthesis.",
+    "common_uses": ["Skin infections", "Respiratory infections", "Urinary tract infections", "Bone infections"],
+    "common_side_effects": ["Diarrhea", "Nausea", "Stomach upset", "Rash"],
+    "avoid_if": ["Cephalosporin allergy", "Severe kidney disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "betadine",
+    "brand_name": "Betadine",
+    "generic_name": "Povidone-Iodine",
+    "components": [
+      { "name": "Povidone-Iodine", "class": "Antiseptic", "role": "Kills bacteria, viruses, and fungi" }
+    ],
+    "purpose": "Antiseptic for wound care and infection prevention",
+    "how_it_works": "Releases iodine slowly to kill microorganisms on contact, preventing infection.",
+    "common_uses": ["Minor cuts and wounds", "Burns", "Surgical site preparation", "Skin infections", "Throat gargle (specific formulation)"],
+    "common_side_effects": ["Skin irritation", "Staining of skin (temporary)", "Allergic reactions (rare)"],
+    "avoid_if": ["Iodine allergy", "Thyroid disorders", "Pregnancy (consult doctor)", "Large or deep wounds without medical supervision"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Guidelines on Hand Hygiene"]
+  },
+  {
+    "id": "savlon",
+    "brand_name": "Savlon",
+    "generic_name": "Chlorhexidine + Cetrimide",
+    "components": [
+      { "name": "Chlorhexidine", "class": "Antiseptic", "role": "Kills bacteria" },
+      { "name": "Cetrimide", "class": "Antiseptic", "role": "Kills bacteria and cleanses" }
+    ],
+    "purpose": "Antiseptic for wound cleaning",
+    "how_it_works": "Disrupts bacterial cell membranes to kill microorganisms.",
+    "common_uses": ["Minor cuts and wounds", "Skin cleansing", "First aid", "Abrasions"],
+    "common_side_effects": ["Skin irritation (rare)", "Allergic reactions (rare)"],
+    "avoid_if": ["Allergic to chlorhexidine", "Deep wounds", "Eyes or ears"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "dettol",
+    "brand_name": "Dettol",
+    "generic_name": "Chloroxylenol",
+    "components": [
+      { "name": "Chloroxylenol", "class": "Antiseptic", "role": "Kills bacteria and fungi" }
+    ],
+    "purpose": "Antiseptic for wound care and disinfection",
+    "how_it_works": "Disrupts bacterial cell walls to kill microorganisms.",
+    "common_uses": ["Minor cuts and wounds", "Skin disinfection", "Surface disinfection", "First aid"],
+    "common_side_effects": ["Skin irritation (if undiluted)", "Allergic reactions (rare)"],
+    "avoid_if": ["Deep wounds", "Eyes or mucous membranes", "Ingestion"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Dilute before use on skin.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Guidelines"]
+  },
+  {
+    "id": "soframycin",
+    "brand_name": "Soframycin",
+    "generic_name": "Framycetin Sulfate",
+    "components": [
+      { "name": "Framycetin", "class": "Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Topical antibiotic for skin infections",
+    "how_it_works": "Inhibits bacterial protein synthesis, preventing bacterial growth and treating infections.",
+    "common_uses": ["Minor cuts and wounds", "Burns", "Skin infections", "Infected eczema", "Impetigo"],
+    "common_side_effects": ["Skin irritation", "Redness", "Itching", "Allergic reactions (rare)"],
+    "avoid_if": ["Allergic to aminoglycoside antibiotics", "Large areas of broken skin", "Deep or puncture wounds", "Severe burns (without medical supervision)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "neosporin",
+    "brand_name": "Neosporin",
+    "generic_name": "Neomycin + Polymyxin B + Bacitracin",
+    "components": [
+      { "name": "Neomycin", "class": "Antibiotic", "role": "Kills bacteria" },
+      { "name": "Polymyxin B", "class": "Antibiotic", "role": "Kills bacteria" },
+      { "name": "Bacitracin", "class": "Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Triple antibiotic for wound care",
+    "how_it_works": "Three antibiotics work together to kill a broad range of bacteria.",
+    "common_uses": ["Minor cuts", "Scrapes", "Burns", "Wound infection prevention"],
+    "common_side_effects": ["Skin irritation", "Rash", "Itching", "Allergic reactions"],
+    "avoid_if": ["Allergic to any component", "Deep wounds", "Animal bites", "Puncture wounds"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "burnol",
+    "brand_name": "Burnol",
+    "generic_name": "Cetrimide + Light Liquid Paraffin",
+    "components": [
+      { "name": "Cetrimide", "class": "Antiseptic", "role": "Prevents infection" },
+      { "name": "Light Liquid Paraffin", "class": "Emollient", "role": "Soothes and protects" }
+    ],
+    "purpose": "Treatment of minor burns and scalds",
+    "how_it_works": "Provides antiseptic action and soothing relief for burns.",
+    "common_uses": ["Minor burns", "Scalds", "Sunburn", "Skin irritation"],
+    "common_side_effects": ["Skin irritation (rare)", "Allergic reactions (rare)"],
+    "avoid_if": ["Deep burns", "Large burn areas", "Infected burns"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For minor burns only. Seek medical help for severe burns.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "silver-sulfadiazine",
+    "brand_name": "Silver Sulfadiazine",
+    "generic_name": "Silver Sulfadiazine",
+    "components": [
+      { "name": "Silver Sulfadiazine", "class": "Topical Antibiotic", "role": "Prevents burn infections" }
+    ],
+    "purpose": "Prevention and treatment of burn infections",
+    "how_it_works": "Silver ions kill bacteria and prevent infection in burn wounds.",
+    "common_uses": ["Second-degree burns", "Third-degree burns", "Burn wound care"],
+    "common_side_effects": ["Skin discoloration", "Burning sensation", "Rash", "Itching"],
+    "avoid_if": ["Sulfa allergy", "Pregnancy (near term)", "Premature infants", "G6PD deficiency"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required for serious burns.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  }
+,
+  {
+    "id": "hydrogen-peroxide",
+    "brand_name": "Hydrogen Peroxide",
+    "generic_name": "Hydrogen Peroxide 3%",
+    "components": [
+      { "name": "Hydrogen Peroxide", "class": "Antiseptic", "role": "Kills bacteria, cleanses wounds" }
+    ],
+    "purpose": "Wound cleaning and disinfection",
+    "how_it_works": "Releases oxygen to kill bacteria and clean debris from wounds.",
+    "common_uses": ["Wound cleaning", "Mouth rinse", "Ear wax removal", "Minor cuts"],
+    "common_side_effects": ["Temporary stinging", "Skin irritation", "Whitening of skin (temporary)"],
+    "avoid_if": ["Deep wounds", "Eyes", "Prolonged use on same area"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Guidelines"]
+  },
+  {
+    "id": "chlorhexidine",
+    "brand_name": "Chlorhexidine Solution",
+    "generic_name": "Chlorhexidine Gluconate",
+    "components": [
+      { "name": "Chlorhexidine", "class": "Antiseptic", "role": "Kills bacteria and fungi" }
+    ],
+    "purpose": "Antiseptic for skin and wound care",
+    "how_it_works": "Disrupts bacterial cell membranes to kill microorganisms.",
+    "common_uses": ["Surgical site preparation", "Wound cleaning", "Mouth rinse", "Skin disinfection"],
+    "common_side_effects": ["Skin irritation", "Staining of teeth (if used as mouthwash)", "Allergic reactions (rare)"],
+    "avoid_if": ["Allergic to chlorhexidine", "Eyes or ears", "Brain or spinal cord"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Guidelines on Hand Hygiene"]
+  },
+  {
+    "id": "dextromethorphan",
+    "brand_name": "Dextromethorphan",
+    "generic_name": "Dextromethorphan Hydrobromide",
+    "components": [
+      { "name": "Dextromethorphan", "class": "Cough Suppressant", "role": "Suppresses dry cough" }
+    ],
+    "purpose": "Relief from dry cough",
+    "how_it_works": "Acts on the cough center in the brain to suppress cough reflex.",
+    "common_uses": ["Dry cough", "Non-productive cough", "Cold-related cough"],
+    "common_side_effects": ["Drowsiness", "Dizziness", "Nausea", "Stomach upset"],
+    "avoid_if": ["Productive cough with mucus", "MAO inhibitor use", "Chronic cough from smoking"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "guaifenesin",
+    "brand_name": "Guaifenesin",
+    "generic_name": "Guaifenesin",
+    "components": [
+      { "name": "Guaifenesin", "class": "Expectorant", "role": "Loosens mucus" }
+    ],
+    "purpose": "Relief from chest congestion",
+    "how_it_works": "Thins and loosens mucus to make coughs more productive.",
+    "common_uses": ["Chest congestion", "Productive cough", "Bronchitis", "Common cold"],
+    "common_side_effects": ["Nausea", "Vomiting", "Dizziness", "Headache"],
+    "avoid_if": ["Chronic cough from smoking", "Asthma", "Emphysema (without medical advice)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Drink plenty of fluids.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "ambroxol",
+    "brand_name": "Ambroxol",
+    "generic_name": "Ambroxol Hydrochloride",
+    "components": [
+      { "name": "Ambroxol", "class": "Mucolytic", "role": "Breaks down mucus" }
+    ],
+    "purpose": "Relief from productive cough and chest congestion",
+    "how_it_works": "Breaks down mucus structure to make it easier to cough up.",
+    "common_uses": ["Productive cough", "Bronchitis", "Asthma with mucus", "COPD"],
+    "common_side_effects": ["Nausea", "Stomach upset", "Altered taste", "Rash"],
+    "avoid_if": ["Peptic ulcer", "First trimester of pregnancy"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "European Medicines Agency"]
+  },
+  {
+    "id": "bromhexine",
+    "brand_name": "Bromhexine",
+    "generic_name": "Bromhexine Hydrochloride",
+    "components": [
+      { "name": "Bromhexine", "class": "Mucolytic", "role": "Thins mucus" }
+    ],
+    "purpose": "Relief from productive cough",
+    "how_it_works": "Reduces mucus viscosity to facilitate expectoration.",
+    "common_uses": ["Productive cough", "Bronchitis", "Respiratory tract infections"],
+    "common_side_effects": ["Nausea", "Stomach upset", "Dizziness", "Headache"],
+    "avoid_if": ["Peptic ulcer", "First trimester of pregnancy"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "ascoril",
+    "brand_name": "Ascoril",
+    "generic_name": "Salbutamol + Bromhexine + Guaifenesin",
+    "components": [
+      { "name": "Salbutamol", "class": "Bronchodilator", "role": "Opens airways" },
+      { "name": "Bromhexine", "class": "Mucolytic", "role": "Thins mucus" },
+      { "name": "Guaifenesin", "class": "Expectorant", "role": "Loosens mucus" }
+    ],
+    "purpose": "Relief from cough with bronchospasm",
+    "how_it_works": "Combination opens airways and helps clear mucus.",
+    "common_uses": ["Productive cough", "Bronchitis", "Asthma with cough", "COPD"],
+    "common_side_effects": ["Tremor", "Headache", "Nausea", "Palpitations"],
+    "avoid_if": ["Heart disease", "Hyperthyroidism", "Diabetes (use with caution)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "salbutamol",
+    "brand_name": "Salbutamol (Asthalin Inhaler)",
+    "generic_name": "Salbutamol",
+    "components": [
+      { "name": "Salbutamol", "class": "Bronchodilator", "role": "Opens airways" }
+    ],
+    "purpose": "Relief from bronchospasm and asthma",
+    "how_it_works": "Relaxes airway muscles to improve breathing.",
+    "common_uses": ["Asthma", "COPD", "Exercise-induced bronchospasm", "Wheezing"],
+    "common_side_effects": ["Tremor", "Headache", "Palpitations", "Muscle cramps"],
+    "avoid_if": ["Allergic to salbutamol", "Uncontrolled hyperthyroidism"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "budesonide",
+    "brand_name": "Budesonide Inhaler",
+    "generic_name": "Budesonide",
+    "components": [
+      { "name": "Budesonide", "class": "Corticosteroid", "role": "Reduces airway inflammation" }
+    ],
+    "purpose": "Prevention of asthma symptoms",
+    "how_it_works": "Reduces inflammation in airways to prevent asthma attacks.",
+    "common_uses": ["Asthma prevention", "COPD", "Allergic rhinitis"],
+    "common_side_effects": ["Hoarse voice", "Oral thrush", "Cough", "Headache"],
+    "avoid_if": ["Active tuberculosis", "Untreated fungal infections", "Acute asthma attack"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Rinse mouth after use. Not for acute attacks.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "mometasone",
+    "brand_name": "Mometasone Nasal Spray",
+    "generic_name": "Mometasone Furoate",
+    "components": [
+      { "name": "Mometasone", "class": "Corticosteroid", "role": "Reduces nasal inflammation" }
+    ],
+    "purpose": "Treatment of allergic rhinitis",
+    "how_it_works": "Reduces inflammation in nasal passages to relieve allergy symptoms.",
+    "common_uses": ["Allergic rhinitis", "Nasal polyps", "Seasonal allergies"],
+    "common_side_effects": ["Nosebleeds", "Nasal irritation", "Headache", "Sore throat"],
+    "avoid_if": ["Recent nasal surgery", "Nasal infections", "Tuberculosis"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "vitamin-c",
+    "brand_name": "Vitamin C",
+    "generic_name": "Ascorbic Acid",
+    "components": [
+      { "name": "Ascorbic Acid", "class": "Vitamin", "role": "Antioxidant, Immunity" }
+    ],
+    "purpose": "Nutritional supplement for immunity",
+    "how_it_works": "Essential vitamin for immune function, collagen synthesis, and antioxidant protection.",
+    "common_uses": ["Vitamin C deficiency", "Immunity support", "Wound healing", "Scurvy prevention"],
+    "common_side_effects": ["Stomach upset (high doses)", "Diarrhea (high doses)", "Kidney stones (very high doses)"],
+    "avoid_if": ["Kidney stones history", "Hemochromatosis", "G6PD deficiency (high doses)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  }
+,
+  {
+    "id": "vitamin-d",
+    "brand_name": "Vitamin D",
+    "generic_name": "Cholecalciferol (Vitamin D3)",
+    "components": [
+      { "name": "Cholecalciferol", "class": "Vitamin", "role": "Bone health, Immunity" }
+    ],
+    "purpose": "Treatment and prevention of vitamin D deficiency",
+    "how_it_works": "Essential for calcium absorption and bone health.",
+    "common_uses": ["Vitamin D deficiency", "Osteoporosis prevention", "Bone health", "Immunity support"],
+    "common_side_effects": ["Rare at recommended doses", "Nausea (high doses)", "Constipation (high doses)"],
+    "avoid_if": ["Hypercalcemia", "Kidney stones", "Sarcoidosis"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Guidelines"]
+  },
+  {
+    "id": "calcium-vitamin-d",
+    "brand_name": "Calcium + Vitamin D",
+    "generic_name": "Calcium Carbonate + Vitamin D3",
+    "components": [
+      { "name": "Calcium Carbonate", "class": "Mineral", "role": "Bone health" },
+      { "name": "Vitamin D3", "class": "Vitamin", "role": "Calcium absorption" }
+    ],
+    "purpose": "Bone health and calcium supplementation",
+    "how_it_works": "Provides calcium with vitamin D to enhance absorption.",
+    "common_uses": ["Osteoporosis", "Calcium deficiency", "Bone health", "Pregnancy"],
+    "common_side_effects": ["Constipation", "Gas", "Bloating", "Stomach upset"],
+    "avoid_if": ["Hypercalcemia", "Kidney stones", "Severe kidney disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Guidelines"]
+  },
+  {
+    "id": "zinc",
+    "brand_name": "Zinc",
+    "generic_name": "Zinc Sulfate",
+    "components": [
+      { "name": "Zinc", "class": "Mineral", "role": "Immunity, Wound healing" }
+    ],
+    "purpose": "Zinc supplementation for immunity",
+    "how_it_works": "Essential mineral for immune function and wound healing.",
+    "common_uses": ["Zinc deficiency", "Immunity support", "Wound healing", "Diarrhea (in children)"],
+    "common_side_effects": ["Nausea", "Stomach upset", "Metallic taste"],
+    "avoid_if": ["Copper deficiency (long-term high doses)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "iron-folic-acid",
+    "brand_name": "Iron + Folic Acid",
+    "generic_name": "Ferrous Sulfate + Folic Acid",
+    "components": [
+      { "name": "Ferrous Sulfate", "class": "Iron supplement", "role": "Treats anemia" },
+      { "name": "Folic Acid", "class": "Vitamin B9", "role": "Red blood cell formation" }
+    ],
+    "purpose": "Treatment and prevention of anemia",
+    "how_it_works": "Provides iron and folic acid for red blood cell production.",
+    "common_uses": ["Iron deficiency anemia", "Pregnancy", "Folic acid deficiency"],
+    "common_side_effects": ["Constipation", "Dark stools", "Nausea", "Stomach upset"],
+    "avoid_if": ["Hemochromatosis", "Hemolytic anemia", "Thalassemia"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Take on empty stomach if tolerated.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "becosules",
+    "brand_name": "Becosules",
+    "generic_name": "Vitamin B Complex + Vitamin C",
+    "components": [
+      { "name": "B Vitamins", "class": "Water-soluble vitamins", "role": "Energy metabolism, Nerve function" },
+      { "name": "Vitamin C", "class": "Antioxidant vitamin", "role": "Immunity, Tissue repair" }
+    ],
+    "purpose": "Nutritional supplement for vitamin deficiency",
+    "how_it_works": "Provides essential vitamins for energy production, immune function, and overall health.",
+    "common_uses": ["Vitamin B deficiency", "Fatigue and weakness", "Stress", "Post-illness recovery", "Poor nutrition"],
+    "common_side_effects": ["Rare at recommended doses", "Nausea (if taken on empty stomach)", "Yellow urine (from B vitamins, harmless)"],
+    "avoid_if": ["Allergic to any component", "Certain medical conditions (consult doctor)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Not a substitute for balanced diet.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  },
+  {
+    "id": "calamine",
+    "brand_name": "Calamine Lotion",
+    "generic_name": "Calamine + Zinc Oxide",
+    "components": [
+      { "name": "Calamine", "class": "Topical Protectant", "role": "Soothes skin" },
+      { "name": "Zinc Oxide", "class": "Astringent", "role": "Dries and protects" }
+    ],
+    "purpose": "Relief from itching and skin irritation",
+    "how_it_works": "Provides cooling and soothing effect on irritated skin.",
+    "common_uses": ["Itching", "Sunburn", "Insect bites", "Chickenpox", "Poison ivy"],
+    "common_side_effects": ["Rare", "Skin dryness (if overused)"],
+    "avoid_if": ["Open wounds", "Infected skin"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "aloe-vera",
+    "brand_name": "Aloe Vera Gel",
+    "generic_name": "Aloe Barbadensis Extract",
+    "components": [
+      { "name": "Aloe Vera", "class": "Natural extract", "role": "Soothes and moisturizes" }
+    ],
+    "purpose": "Soothing relief for skin irritation",
+    "how_it_works": "Provides cooling, moisturizing, and healing properties.",
+    "common_uses": ["Sunburn", "Minor burns", "Dry skin", "Skin irritation", "Wound healing"],
+    "common_side_effects": ["Rare", "Allergic reactions (rare)"],
+    "avoid_if": ["Allergic to aloe", "Deep wounds"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Ayurvedic Pharmacopoeia"]
+  },
+  {
+    "id": "hydrocortisone",
+    "brand_name": "Hydrocortisone Cream",
+    "generic_name": "Hydrocortisone",
+    "components": [
+      { "name": "Hydrocortisone", "class": "Corticosteroid", "role": "Reduces inflammation" }
+    ],
+    "purpose": "Relief from skin inflammation and itching",
+    "how_it_works": "Reduces inflammation and suppresses immune response in skin.",
+    "common_uses": ["Eczema", "Dermatitis", "Insect bites", "Allergic rashes", "Psoriasis"],
+    "common_side_effects": ["Skin thinning (prolonged use)", "Burning", "Itching", "Dryness"],
+    "avoid_if": ["Skin infections", "Acne", "Rosacea", "Face (without medical advice)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only. Do not use long-term.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "betamethasone",
+    "brand_name": "Betamethasone",
+    "generic_name": "Betamethasone Valerate",
+    "components": [
+      { "name": "Betamethasone", "class": "Corticosteroid", "role": "Reduces inflammation" }
+    ],
+    "purpose": "Treatment of inflammatory skin conditions",
+    "how_it_works": "Potent corticosteroid that reduces inflammation and itching.",
+    "common_uses": ["Eczema", "Psoriasis", "Dermatitis", "Severe allergic rashes"],
+    "common_side_effects": ["Skin thinning", "Stretch marks", "Burning", "Itching"],
+    "avoid_if": ["Skin infections", "Acne", "Rosacea", "Children (without medical advice)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "British National Formulary"]
+  },
+  {
+    "id": "clotrimazole",
+    "brand_name": "Clotrimazole",
+    "generic_name": "Clotrimazole",
+    "components": [
+      { "name": "Clotrimazole", "class": "Antifungal", "role": "Kills fungi" }
+    ],
+    "purpose": "Treatment of fungal skin infections",
+    "how_it_works": "Disrupts fungal cell membranes to kill fungi.",
+    "common_uses": ["Athlete's foot", "Ringworm", "Jock itch", "Yeast infections", "Fungal skin infections"],
+    "common_side_effects": ["Skin irritation", "Burning", "Itching", "Redness"],
+    "avoid_if": ["Allergic to clotrimazole"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Complete full course.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "ketoconazole",
+    "brand_name": "Ketoconazole",
+    "generic_name": "Ketoconazole",
+    "components": [
+      { "name": "Ketoconazole", "class": "Antifungal", "role": "Kills fungi" }
+    ],
+    "purpose": "Treatment of fungal infections",
+    "how_it_works": "Inhibits fungal cell membrane synthesis.",
+    "common_uses": ["Dandruff", "Seborrheic dermatitis", "Fungal skin infections", "Ringworm"],
+    "common_side_effects": ["Skin irritation", "Itching", "Burning", "Dryness"],
+    "avoid_if": ["Allergic to ketoconazole", "Liver disease (oral form)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "terbinafine",
+    "brand_name": "Terbinafine",
+    "generic_name": "Terbinafine Hydrochloride",
+    "components": [
+      { "name": "Terbinafine", "class": "Antifungal", "role": "Kills fungi" }
+    ],
+    "purpose": "Treatment of fungal infections",
+    "how_it_works": "Inhibits fungal cell wall synthesis.",
+    "common_uses": ["Athlete's foot", "Ringworm", "Jock itch", "Nail fungus"],
+    "common_side_effects": ["Skin irritation", "Itching", "Burning", "Rash"],
+    "avoid_if": ["Liver disease", "Kidney disease", "Allergic to terbinafine"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "candid-cream",
+    "brand_name": "Candid Cream",
+    "generic_name": "Clotrimazole",
+    "components": [
+      { "name": "Clotrimazole", "class": "Antifungal", "role": "Kills fungi" }
+    ],
+    "purpose": "Treatment of fungal skin infections",
+    "how_it_works": "Disrupts fungal cell membranes.",
+    "common_uses": ["Athlete's foot", "Ringworm", "Jock itch", "Fungal skin infections"],
+    "common_side_effects": ["Skin irritation", "Burning", "Itching"],
+    "avoid_if": ["Allergic to clotrimazole"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. For external use only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "Indian Pharmacopoeia"]
+  }
+,
+  {
+    "id": "artificial-tears",
+    "brand_name": "Artificial Tears",
+    "generic_name": "Carboxymethylcellulose",
+    "components": [
+      { "name": "Carboxymethylcellulose", "class": "Lubricant", "role": "Moisturizes eyes" }
+    ],
+    "purpose": "Relief from dry eyes",
+    "how_it_works": "Provides lubrication and moisture to dry eyes.",
+    "common_uses": ["Dry eyes", "Eye irritation", "Computer vision syndrome", "Contact lens discomfort"],
+    "common_side_effects": ["Temporary blurred vision", "Eye irritation (rare)"],
+    "avoid_if": ["Eye infection", "Allergic to components"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Guidelines"]
+  },
+  {
+    "id": "tobramycin-eye-drops",
+    "brand_name": "Tobramycin Eye Drops",
+    "generic_name": "Tobramycin",
+    "components": [
+      { "name": "Tobramycin", "class": "Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial eye infections",
+    "how_it_works": "Inhibits bacterial protein synthesis.",
+    "common_uses": ["Conjunctivitis", "Eye infections", "Corneal ulcers"],
+    "common_side_effects": ["Eye irritation", "Burning", "Stinging", "Redness"],
+    "avoid_if": ["Viral or fungal eye infections", "Allergic to aminoglycosides"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "ciprofloxacin-eye-drops",
+    "brand_name": "Ciprofloxacin Eye/Ear Drops",
+    "generic_name": "Ciprofloxacin",
+    "components": [
+      { "name": "Ciprofloxacin", "class": "Antibiotic", "role": "Kills bacteria" }
+    ],
+    "purpose": "Treatment of bacterial eye and ear infections",
+    "how_it_works": "Inhibits bacterial DNA replication.",
+    "common_uses": ["Conjunctivitis", "Corneal ulcers", "Ear infections", "Eye infections"],
+    "common_side_effects": ["Eye/ear irritation", "Burning", "Itching", "Redness"],
+    "avoid_if": ["Viral infections", "Fungal infections", "Allergic to fluoroquinolones"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "olopatadine",
+    "brand_name": "Olopatadine Eye Drops",
+    "generic_name": "Olopatadine",
+    "components": [
+      { "name": "Olopatadine", "class": "Antihistamine", "role": "Allergy relief" }
+    ],
+    "purpose": "Relief from allergic conjunctivitis",
+    "how_it_works": "Blocks histamine to reduce allergic eye symptoms.",
+    "common_uses": ["Allergic conjunctivitis", "Eye itching", "Eye redness from allergies"],
+    "common_side_effects": ["Headache", "Burning", "Stinging", "Blurred vision"],
+    "avoid_if": ["Allergic to olopatadine", "Contact lens wear (remove before use)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "FDA Drug Database"]
+  },
+  {
+    "id": "saline-nasal-spray",
+    "brand_name": "Saline Nasal Spray",
+    "generic_name": "Sodium Chloride 0.9%",
+    "components": [
+      { "name": "Sodium Chloride", "class": "Saline", "role": "Moisturizes and cleanses" }
+    ],
+    "purpose": "Nasal moisturization and congestion relief",
+    "how_it_works": "Moisturizes nasal passages and helps clear mucus.",
+    "common_uses": ["Dry nasal passages", "Nasal congestion", "Sinus irrigation", "Allergies"],
+    "common_side_effects": ["Rare", "Nasal irritation (rare)"],
+    "avoid_if": ["Ear infections (use with caution)"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Safe for long-term use.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Guidelines"]
+  },
+  {
+    "id": "albendazole",
+    "brand_name": "Albendazole",
+    "generic_name": "Albendazole",
+    "components": [
+      { "name": "Albendazole", "class": "Anthelmintic", "role": "Kills parasitic worms" }
+    ],
+    "purpose": "Treatment of parasitic worm infections",
+    "how_it_works": "Inhibits glucose uptake in parasites, causing their death.",
+    "common_uses": ["Roundworm", "Hookworm", "Pinworm", "Tapeworm", "Hydatid disease"],
+    "common_side_effects": ["Headache", "Nausea", "Abdominal pain", "Dizziness"],
+    "avoid_if": ["Pregnancy (first trimester)", "Liver disease", "Allergic to albendazole"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "ivermectin",
+    "brand_name": "Ivermectin",
+    "generic_name": "Ivermectin",
+    "components": [
+      { "name": "Ivermectin", "class": "Antiparasitic", "role": "Kills parasites" }
+    ],
+    "purpose": "Treatment of parasitic infections",
+    "how_it_works": "Paralyzes and kills parasites by affecting their nervous system.",
+    "common_uses": ["Scabies", "Head lice", "River blindness", "Strongyloidiasis"],
+    "common_side_effects": ["Dizziness", "Nausea", "Diarrhea", "Skin rash"],
+    "avoid_if": ["Pregnancy", "Breastfeeding", "Children under 15 kg", "Meningitis"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "mebendazole",
+    "brand_name": "Mebendazole",
+    "generic_name": "Mebendazole",
+    "components": [
+      { "name": "Mebendazole", "class": "Anthelmintic", "role": "Kills parasitic worms" }
+    ],
+    "purpose": "Treatment of worm infections",
+    "how_it_works": "Prevents worms from absorbing glucose, causing their death.",
+    "common_uses": ["Pinworm", "Roundworm", "Hookworm", "Whipworm"],
+    "common_side_effects": ["Abdominal pain", "Diarrhea", "Nausea", "Headache"],
+    "avoid_if": ["Pregnancy (first trimester)", "Allergic to mebendazole"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "amlodipine",
+    "brand_name": "Amlodipine",
+    "generic_name": "Amlodipine Besylate",
+    "components": [
+      { "name": "Amlodipine", "class": "Calcium Channel Blocker", "role": "Lowers blood pressure" }
+    ],
+    "purpose": "Treatment of high blood pressure and angina",
+    "how_it_works": "Relaxes blood vessels to lower blood pressure and improve blood flow.",
+    "common_uses": ["Hypertension", "Angina", "Coronary artery disease"],
+    "common_side_effects": ["Swelling of ankles", "Headache", "Dizziness", "Flushing"],
+    "avoid_if": ["Severe aortic stenosis", "Cardiogenic shock", "Unstable angina"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Lifelong medication.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "telmisartan",
+    "brand_name": "Telmisartan",
+    "generic_name": "Telmisartan",
+    "components": [
+      { "name": "Telmisartan", "class": "ARB (Angiotensin Receptor Blocker)", "role": "Lowers blood pressure" }
+    ],
+    "purpose": "Treatment of high blood pressure",
+    "how_it_works": "Blocks angiotensin receptors to relax blood vessels.",
+    "common_uses": ["Hypertension", "Heart failure", "Diabetic nephropathy"],
+    "common_side_effects": ["Dizziness", "Headache", "Fatigue", "Back pain"],
+    "avoid_if": ["Pregnancy", "Severe kidney disease", "Bilateral renal artery stenosis"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "losartan",
+    "brand_name": "Losartan",
+    "generic_name": "Losartan Potassium",
+    "components": [
+      { "name": "Losartan", "class": "ARB (Angiotensin Receptor Blocker)", "role": "Lowers blood pressure" }
+    ],
+    "purpose": "Treatment of high blood pressure",
+    "how_it_works": "Blocks angiotensin receptors to lower blood pressure.",
+    "common_uses": ["Hypertension", "Diabetic nephropathy", "Heart failure"],
+    "common_side_effects": ["Dizziness", "Fatigue", "Low blood pressure", "Hyperkalemia"],
+    "avoid_if": ["Pregnancy", "Severe kidney disease", "Hyperkalemia"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "metformin",
+    "brand_name": "Metformin",
+    "generic_name": "Metformin Hydrochloride",
+    "components": [
+      { "name": "Metformin", "class": "Biguanide", "role": "Lowers blood sugar" }
+    ],
+    "purpose": "Treatment of type 2 diabetes",
+    "how_it_works": "Reduces glucose production in liver and improves insulin sensitivity.",
+    "common_uses": ["Type 2 diabetes", "Prediabetes", "PCOS"],
+    "common_side_effects": ["Nausea", "Diarrhea", "Stomach upset", "Metallic taste"],
+    "avoid_if": ["Severe kidney disease", "Liver disease", "Heart failure", "Lactic acidosis risk"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Take with meals.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "atorvastatin",
+    "brand_name": "Atorvastatin",
+    "generic_name": "Atorvastatin Calcium",
+    "components": [
+      { "name": "Atorvastatin", "class": "Statin", "role": "Lowers cholesterol" }
+    ],
+    "purpose": "Treatment of high cholesterol",
+    "how_it_works": "Inhibits cholesterol synthesis in the liver.",
+    "common_uses": ["High cholesterol", "Heart disease prevention", "Stroke prevention"],
+    "common_side_effects": ["Muscle pain", "Headache", "Nausea", "Diarrhea"],
+    "avoid_if": ["Active liver disease", "Pregnancy", "Breastfeeding"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Take at night.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "rosuvastatin",
+    "brand_name": "Rosuvastatin",
+    "generic_name": "Rosuvastatin Calcium",
+    "components": [
+      { "name": "Rosuvastatin", "class": "Statin", "role": "Lowers cholesterol" }
+    ],
+    "purpose": "Treatment of high cholesterol",
+    "how_it_works": "Inhibits HMG-CoA reductase to reduce cholesterol production.",
+    "common_uses": ["High cholesterol", "Cardiovascular disease prevention"],
+    "common_side_effects": ["Muscle pain", "Headache", "Nausea", "Abdominal pain"],
+    "avoid_if": ["Active liver disease", "Pregnancy", "Breastfeeding", "Severe kidney disease"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "levothyroxine",
+    "brand_name": "Levothyroxine",
+    "generic_name": "Levothyroxine Sodium",
+    "components": [
+      { "name": "Levothyroxine", "class": "Thyroid Hormone", "role": "Replaces thyroid hormone" }
+    ],
+    "purpose": "Treatment of hypothyroidism",
+    "how_it_works": "Replaces deficient thyroid hormone.",
+    "common_uses": ["Hypothyroidism", "Thyroid hormone deficiency", "Goiter"],
+    "common_side_effects": ["Rare at correct dose", "Palpitations (overdose)", "Weight loss (overdose)", "Anxiety (overdose)"],
+    "avoid_if": ["Untreated adrenal insufficiency", "Thyrotoxicosis", "Recent heart attack"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Take on empty stomach.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "clopidogrel",
+    "brand_name": "Clopidogrel",
+    "generic_name": "Clopidogrel Bisulfate",
+    "components": [
+      { "name": "Clopidogrel", "class": "Antiplatelet", "role": "Prevents blood clots" }
+    ],
+    "purpose": "Prevention of heart attack and stroke",
+    "how_it_works": "Prevents platelets from clumping together to form clots.",
+    "common_uses": ["Heart attack prevention", "Stroke prevention", "Peripheral artery disease", "After stent placement"],
+    "common_side_effects": ["Bleeding", "Bruising", "Nosebleeds", "Stomach upset"],
+    "avoid_if": ["Active bleeding", "Severe liver disease", "Recent surgery"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Do not stop without medical advice.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  },
+  {
+    "id": "furosemide",
+    "brand_name": "Furosemide",
+    "generic_name": "Furosemide",
+    "components": [
+      { "name": "Furosemide", "class": "Loop Diuretic", "role": "Removes excess fluid" }
+    ],
+    "purpose": "Treatment of fluid retention and high blood pressure",
+    "how_it_works": "Increases urine production to remove excess fluid.",
+    "common_uses": ["Heart failure", "Edema", "High blood pressure", "Kidney disease"],
+    "common_side_effects": ["Frequent urination", "Dizziness", "Low potassium", "Dehydration"],
+    "avoid_if": ["Anuria", "Severe dehydration", "Severe electrolyte imbalance"],
+    "notes": "Consult a qualified doctor for dosage and usage. This information is for awareness only. Prescription required. Monitor electrolytes.",
+    "sources": ["CDSCO - Central Drugs Standard Control Organisation", "WHO Essential Medicines List"]
+  }
+]

@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import DoctorDetail from "./pages/DoctorDetail";
 import Pharmacy from "./pages/Pharmacy";
+import Medicines from "./pages/Medicines";
 import Profile from "./pages/Profile";
 import SymptomChecker from "./pages/SymptomChecker";
 import ReportAnalyzer from "./pages/ReportAnalyzer";
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/doctor/:id" element={<AuthGuard><DoctorDetail /></AuthGuard>} />
           <Route path="/explore" element={<AuthGuard><Pharmacy /></AuthGuard>} />
           <Route path="/pharmacy" element={<AuthGuard><Pharmacy /></AuthGuard>} />
+          <Route path="/medicines" element={<AuthGuard><Medicines /></AuthGuard>} />
           <Route path="/profile" element={<AuthGuard><Profile /></AuthGuard>} />
 
           <Route path="/symptom-checker" element={<AuthGuard><SymptomChecker /></AuthGuard>} />
