@@ -8,7 +8,12 @@ export interface IUser extends Document {
   lastName: string;
   dateOfBirth?: Date;
   phone?: string;
+  isVerified: boolean;
+  verificationToken?: string;
+  verificationExpires?: Date;
+  emailVerifiedAt?: Date;
   createdAt: Date;
+  updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
@@ -55,17 +60,17 @@ const UserSchema: Schema = new Schema({
   emailVerifiedAt: {
     type: Date
   }
-}, { 
-  timestamps: true 
+}, {
+  timestamps: true
 });
 
 // Hash password before saving
-UserSchema.pre('save', async function(next) {
+UserSchema.pre<IUser>('save', async function (next) {
   if (!this.isModified('password')) return next();
-  
+
   try {
     const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
+    this.password = await bcrypt.hash(this.password as string, salt);
     next();
   } catch (error) {
     next(error as Error);
@@ -73,7 +78,7 @@ UserSchema.pre('save', async function(next) {
 });
 
 // Compare password method
-UserSchema.methods.comparePassword = async function(candidatePassword: string): Promise<boolean> {
+UserSchema.methods.comparePassword = async function (candidatePassword: string): Promise<boolean> {
   return bcrypt.compare(candidatePassword, this.password);
 };
 
