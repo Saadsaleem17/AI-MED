@@ -1,11 +1,11 @@
-import { Home, Search, FolderOpen, User } from "lucide-react";
+import { Home, Pill, FolderOpen, User } from "lucide-react";
 import { NavLink } from "./NavLink";
 import { cn } from "@/lib/utils";
 
 const BottomNav = () => {
   const navItems = [
     { icon: Home, label: "Home", path: "/home" },
-    { icon: Search, label: "Explore", path: "/explore" },
+    { icon: Pill, label: "Medicines", path: "/medicines" },
     { icon: FolderOpen, label: "Records", path: "/health-records" },
     { icon: User, label: "Profile", path: "/profile" },
   ];
