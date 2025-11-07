@@ -32,10 +32,16 @@ const Medicines = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMedicine, setSelectedMedicine] = useState<Medicine | null>(null);
 
-  const filteredMedicines = medicinesData.filter((medicine) =>
-    medicine.brand_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    medicine.generic_name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredMedicines = medicinesData.filter((medicine) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      medicine.brand_name.toLowerCase().includes(query) ||
+      medicine.generic_name.toLowerCase().includes(query) ||
+      medicine.purpose.toLowerCase().includes(query) ||
+      medicine.common_uses.some(use => use.toLowerCase().includes(query)) ||
+      medicine.components.some(comp => comp.name.toLowerCase().includes(query))
+    );
+  });
 
   return (
     <div className="min-h-screen bg-background pb-24">
@@ -67,12 +73,15 @@ const Medicines = () => {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
           <Input
             type="text"
-            placeholder="Search medicines..."
+            placeholder="Search by medicine name, symptom, or condition..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"
           />
         </div>
+        <p className="text-xs text-muted-foreground mt-2">
+          Try: "cough", "fever", "headache", "acidity", "allergy", etc.
+        </p>
       </div>
 
       {/* Medicines List */}
