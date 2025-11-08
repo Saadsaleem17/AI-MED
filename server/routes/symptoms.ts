@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import SymptomLog from '../models/SymptomLog';
+import { analyzeSymptoms } from '../services/geminiService';
 
 const router = express.Router();
 
@@ -56,6 +57,30 @@ router.post('/', async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: 'Error creating symptom log'
+    });
+  }
+});
+
+// Analyze symptoms using AI
+router.post('/analyze', async (req: Request, res: Response) => {
+  try {
+    const { symptoms } = req.body;
+
+    if (!symptoms || typeof symptoms !== 'string' || !symptoms.trim()) {
+      return res.status(400).json({
+        success: false,
+        error: 'Symptoms description is required'
+      });
+    }
+
+    const analysis = await analyzeSymptoms(symptoms.trim());
+
+    res.json(analysis);
+  } catch (error: any) {
+    console.error('Error analyzing symptoms:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to analyze symptoms'
     });
   }
 });

@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
+import path from 'path';
 // Load environment variables FIRST before any other imports
-dotenv.config();
+// Load from root directory .env file
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
 import express from 'express';
 import cors from 'cors';

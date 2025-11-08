@@ -1,22 +1,24 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.0-flash-exp";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Initialize Gemini AI
 let genAI = null;
 let model = null;
 
 function initializeGemini() {
+  // Access environment variables inside the function, not at module level
+  const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+  const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.0-flash-exp";
+  
   if (!GEMINI_API_KEY) {
     console.error('⚠️  GEMINI_API_KEY is not set in environment variables!');
+    console.error('Available env keys:', Object.keys(process.env).filter(k => k.includes('GEMINI')));
     throw new Error('Gemini API key is not configured');
   }
   
   if (!genAI) {
     genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
     model = genAI.getGenerativeModel({ model: GEMINI_MODEL });
-    console.log('✅ Gemini AI initialized successfully');
+    console.log('✅ Gemini AI initialized successfully with model:', GEMINI_MODEL);
   }
   
   return model;
@@ -89,7 +91,7 @@ Return ONLY the JSON object, no additional text.`;
     return {
       success: true,
       analysis: analysis,
-      model: GEMINI_MODEL
+      model: process.env.GEMINI_MODEL || "gemini-2.0-flash-exp"
     };
     
   } catch (error) {
@@ -137,7 +139,75 @@ Focus on the most important health information and findings.`;
   }
 }
 
-module.exports = {
+async function analyzeSymptoms(symptomsText) {
+  try {
+    console.log('Starting symptom analysis with Gemini AI...');
+    
+    if (!symptomsText || typeof symptomsText !== 'string' || symptomsText.trim().length === 0) {
+      throw new Error('No symptoms provided for analysis');
+    }
+    
+    const geminiModel = initializeGemini();
+    
+    const prompt = `You are a medical AI assistant analyzing patient symptoms. 
+
+PATIENT SYMPTOMS:
+${symptomsText}
+
+Please provide a comprehensive symptom analysis in the following JSON format:
+{
+  "possibleConditions": [
+    {
+      "name": "Condition name",
+      "probability": "High/Moderate/Low/Possible",
+      "description": "Brief explanation of why this condition matches the symptoms"
+    }
+  ],
+  "recommendations": [
+    "List of 4-6 actionable recommendations for the patient"
+  ],
+  "urgency": "low/medium/high",
+  "urgencyMessage": "Brief message about urgency level",
+  "disclaimer": "This is an AI-powered symptom checker for informational purposes only. It is NOT a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or qualified health provider with any questions about a medical condition. If you have a medical emergency, call emergency services immediately."
+}
+
+IMPORTANT GUIDELINES:
+- Identify 2-4 most likely conditions based on the symptoms
+- Set urgency to "high" for emergency symptoms (chest pain, difficulty breathing, severe bleeding, etc.)
+- Set urgency to "medium" for symptoms requiring medical attention within 24-48 hours
+- Set urgency to "low" for minor symptoms that can be monitored at home
+- Provide practical, actionable recommendations
+- Be cautious and err on the side of recommending medical consultation when uncertain
+- Include the disclaimer exactly as shown
+
+Return ONLY the JSON object, no additional text.`;
+
+    const result = await geminiModel.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    
+    console.log('Symptom analysis completed');
+    
+    // Parse the JSON response
+    let jsonText = text.trim();
+    if (jsonText.startsWith('```json')) {
+      jsonText = jsonText.replace(/```json\n?/g, '').replace(/```\n?/g, '');
+    } else if (jsonText.startsWith('```')) {
+      jsonText = jsonText.replace(/```\n?/g, '');
+    }
+    
+    const analysis = JSON.parse(jsonText);
+    
+    return analysis;
+    
+  } catch (error) {
+    console.error('Symptom Analysis Error:', error);
+    throw new Error('Failed to analyze symptoms: ' + error.message);
+  }
+}
+
+export {
   analyzeMedicalReport,
-  generateHealthSummary
+  generateHealthSummary,
+  analyzeSymptoms
 };
