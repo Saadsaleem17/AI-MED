@@ -17,6 +17,11 @@ interface AnalysisResult {
     description: string;
   }>;
   recommendations: string[];
+  suggestedMedicines?: Array<{
+    name: string;
+    reason: string;
+    previouslyPrescribed?: boolean;
+  }>;
   urgency: 'low' | 'medium' | 'high';
   urgencyMessage: string;
   disclaimer: string;
@@ -424,6 +429,36 @@ const SymptomChecker = () => {
                 ))}
               </div>
             </Card>
+
+            {/* Suggested Medicines */}
+            {analysis.suggestedMedicines && analysis.suggestedMedicines.length > 0 && (
+              <Card className="p-5 shadow-card border-blue-200 bg-blue-50">
+                <h3 className="font-bold mb-3 flex items-center gap-2 text-blue-800">
+                  <span>💊</span> Suggested Medicines
+                </h3>
+                <div className="space-y-3">
+                  {analysis.suggestedMedicines.map((medicine, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 bg-white rounded-lg border border-blue-200"
+                    >
+                      <div className="flex items-start justify-between mb-1">
+                        <h4 className="font-semibold text-blue-900">{medicine.name}</h4>
+                        {medicine.previouslyPrescribed && (
+                          <span className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full">
+                            Previously Used
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-blue-700">{medicine.reason}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-blue-600 mt-3 italic">
+                  ⚠️ These are suggestions based on your symptoms{analysis.usedMedicalHistory ? ' and medical history' : ''}. Always consult a doctor before taking any medication.
+                </p>
+              </Card>
+            )}
 
             {/* Recommendations */}
             <Card className="p-5 shadow-card border-green-200 bg-green-50">

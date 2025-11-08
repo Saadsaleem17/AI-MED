@@ -176,6 +176,26 @@ The patient has been tracking the following symptoms:
         }
       }
 
+      // Add previous medicines
+      if (medicalHistory.previousMedicines && medicalHistory.previousMedicines.length > 0) {
+        historyContext += `\n💊 PREVIOUSLY PRESCRIBED MEDICINES:
+The patient has been prescribed the following medicines in past reports:
+${medicalHistory.previousMedicines.join(', ')}
+
+`;
+        
+        if (medicalHistory.medicineHistory && medicalHistory.medicineHistory.length > 0) {
+          historyContext += `Medicine prescription history:
+`;
+          medicalHistory.medicineHistory.slice(0, 5).forEach((med, idx) => {
+            historyContext += `${idx + 1}. ${med.name} - prescribed on ${new Date(med.date).toLocaleDateString()} for: ${med.condition}
+`;
+          });
+          historyContext += `
+`;
+        }
+      }
+
       // Add medical reports
       if (medicalHistory.recentReports && medicalHistory.recentReports.length > 0) {
         historyContext += `\nMEDICAL REPORTS:
@@ -211,6 +231,8 @@ CRITICAL INSTRUCTIONS FOR MEDICAL HISTORY ANALYSIS:
 6. If the patient has a history of allergies or specific conditions (like allergic bronchitis), consider these FIRST when symptoms match
 7. PAY SPECIAL ATTENTION to recurring symptoms from the symptom tracker - these indicate chronic or persistent issues
 8. If current symptoms match tracked symptoms, mention the pattern and frequency
+9. IMPORTANT: If the patient was previously prescribed medicines for similar symptoms/conditions, include those medicines in the "suggestedMedicines" array
+10. Match current symptoms with past prescriptions - if similar symptoms were treated with specific medicines before, suggest those same medicines
 
 When analyzing, ask yourself:
 - Does this match any condition mentioned in the patient's medical history?
@@ -218,6 +240,7 @@ When analyzing, ask yourself:
 - Are there patterns in the medical history that explain current symptoms?
 - Has the patient been tracking similar symptoms recently? What does the pattern suggest?
 - Are the current symptoms part of a chronic condition indicated by recurring tracked symptoms?
+- Were any medicines previously prescribed for similar symptoms? If yes, include them in suggestions.
 `;
       }
     }
@@ -239,6 +262,13 @@ Please provide a comprehensive symptom analysis in the following JSON format:
   "recommendations": [
     "List of 4-6 actionable recommendations for the patient"
   ],
+  "suggestedMedicines": [
+    {
+      "name": "Medicine name (generic or brand)",
+      "reason": "Why this medicine could help with the symptoms",
+      "previouslyPrescribed": true/false
+    }
+  ],
   "urgency": "low/medium/high",
   "urgencyMessage": "Brief message about urgency level",
   "disclaimer": "This is an AI-powered symptom checker for informational purposes only. It is NOT a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or qualified health provider with any questions about a medical condition. If you have a medical emergency, call emergency services immediately."
@@ -250,6 +280,12 @@ IMPORTANT GUIDELINES:
 - Set urgency to "medium" for symptoms requiring medical attention within 24-48 hours
 - Set urgency to "low" for minor symptoms that can be monitored at home
 - Provide practical, actionable recommendations
+- MEDICINE SUGGESTIONS: Include 2-5 medicines that could help with the symptoms
+  * If the patient has medical history with previous prescriptions, PRIORITIZE those medicines (set previouslyPrescribed: true)
+  * For common symptoms (fever, pain, cough), suggest appropriate over-the-counter medicines
+  * Only suggest medicines that are commonly used for the identified conditions
+  * Be specific with medicine names (e.g., "Paracetamol" not just "pain reliever")
+  * Explain briefly why each medicine could help
 - Be cautious and err on the side of recommending medical consultation when uncertain
 - Include the disclaimer exactly as shown
 

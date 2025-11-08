@@ -6,6 +6,54 @@ import { analyzeSymptoms } from '../services/geminiService';
 
 const router = express.Router();
 
+// Helper function to extract medicines from medical reports
+function extractMedicinesFromReports(reports: any[]) {
+  const medicineSet = new Set<string>();
+  const medicineDetails: Array<{ name: string; condition: string; date: Date }> = [];
+  
+  reports.forEach(report => {
+    const fullText = `${report.summary} ${report.extractedText || ''}`;
+    
+    // Common medicine/prescription patterns
+    const medicinePatterns = [
+      /(?:prescribed|medication|medicine|drug|tablet|capsule|syrup)[:\s]+([^.\n]+)/gi,
+      /(?:rx|℞)[:\s]+([^.\n]+)/gi,
+      /take\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:\d+|one|two|three)/gi,
+      /([A-Z][a-z]+(?:ol|in|ine|ate|ide|cin|xin|pam|zole|pril|sartan|statin))\s+\d+\s*(?:mg|ml|g)/gi
+    ];
+    
+    medicinePatterns.forEach(pattern => {
+      const matches = fullText.matchAll(pattern);
+      for (const match of matches) {
+        if (match[1]) {
+          const medicines = match[1].split(/[,;]/).map(m => m.trim());
+          medicines.forEach(med => {
+            // Clean up the medicine name
+            const cleanMed = med
+              .replace(/\d+\s*(?:mg|ml|g|mcg|units?)\b/gi, '')
+              .replace(/\b(?:tablet|capsule|syrup|injection|drops?)\b/gi, '')
+              .trim();
+            
+            if (cleanMed.length > 2 && cleanMed.length < 50) {
+              medicineSet.add(cleanMed);
+              medicineDetails.push({
+                name: cleanMed,
+                condition: report.summary.substring(0, 100),
+                date: report.uploadDate
+              });
+            }
+          });
+        }
+      }
+    });
+  });
+  
+  return {
+    uniqueMedicines: Array.from(medicineSet),
+    medicineHistory: medicineDetails
+  };
+}
+
 // Helper function to get patient's medical history
 async function getMedicalHistory(userId: string) {
   try {
@@ -70,10 +118,15 @@ async function getMedicalHistory(userId: string) {
       .filter(([_, count]) => count >= 2)
       .map(([symptom, count]) => `${symptom} (${count} times)`);
 
+    // Extract medicines from reports
+    const { uniqueMedicines, medicineHistory } = extractMedicinesFromReports(reports);
+
     // Extract relevant medical information
     const history = {
       symptomLogs: symptomHistory,
       recurringSymptoms,
+      previousMedicines: uniqueMedicines,
+      medicineHistory: medicineHistory,
       recentReports: reports.map(report => {
         // Extract key medical terms and diagnoses from summary and text
         const fullText = `${report.summary} ${report.extractedText || ''}`.toLowerCase();
@@ -141,6 +194,7 @@ async function getMedicalHistory(userId: string) {
     history.allDiagnoses = Array.from(diagnosisSet);
 
     console.log('📋 Extracted diagnoses:', history.allDiagnoses);
+    console.log('💊 Previous medicines:', history.previousMedicines);
     console.log('📊 Abnormal parameters:', history.allAbnormalParameters);
     console.log('🔄 Recurring symptoms:', history.recurringSymptoms);
     console.log('📝 Total symptom logs:', history.symptomLogs.length);
