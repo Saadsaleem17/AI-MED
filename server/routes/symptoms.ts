@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import mongoose from 'mongoose';
 import SymptomLog from '../models/SymptomLog';
 import Report from '../models/Report';
 import { analyzeSymptoms } from '../services/geminiService';
@@ -16,15 +17,63 @@ async function getMedicalHistory(userId: string) {
       .limit(5)
       .select('summary parameters metadata.reportDate extractedText uploadDate');
 
-    console.log(`📊 Found ${reports.length} reports for user`);
+    // Get recent symptom logs (last 30 days)
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    
+    console.log('🔍 Searching for symptom logs with userId:', userId);
+    console.log('📅 Date range: from', thirtyDaysAgo.toISOString(), 'to now');
+    
+    // Convert userId to ObjectId if it's a valid ObjectId string
+    let userIdQuery: any = userId;
+    if (mongoose.Types.ObjectId.isValid(userId)) {
+      userIdQuery = new mongoose.Types.ObjectId(userId);
+      console.log('✅ Converted userId to ObjectId');
+    }
+    
+    const symptomLogs = await SymptomLog.find({ 
+      userId: userIdQuery,
+      createdAt: { $gte: thirtyDaysAgo }
+    })
+      .sort({ createdAt: -1 })
+      .limit(10);
 
-    if (!reports || reports.length === 0) {
-      console.log('⚠️  No medical history found for user');
+    console.log(`📊 Found ${reports.length} reports and ${symptomLogs.length} symptom logs for user`);
+    
+    if (symptomLogs.length > 0) {
+      console.log('📝 Sample symptom log:', JSON.stringify(symptomLogs[0], null, 2));
+    }
+
+    if ((!reports || reports.length === 0) && (!symptomLogs || symptomLogs.length === 0)) {
+      console.log('⚠️  No medical history or symptom logs found for user');
       return null;
     }
 
+    // Process symptom logs
+    const symptomHistory = symptomLogs.map(log => ({
+      date: log.createdAt,
+      symptoms: log.symptoms,
+      severity: log.severity,
+      temperature: log.temperature,
+      notes: log.notes
+    }));
+
+    // Analyze symptom patterns
+    const symptomFrequency: { [key: string]: number } = {};
+    symptomLogs.forEach(log => {
+      log.symptoms.forEach(symptom => {
+        symptomFrequency[symptom] = (symptomFrequency[symptom] || 0) + 1;
+      });
+    });
+
+    const recurringSymptoms = Object.entries(symptomFrequency)
+      .filter(([_, count]) => count >= 2)
+      .map(([symptom, count]) => `${symptom} (${count} times)`);
+
     // Extract relevant medical information
     const history = {
+      symptomLogs: symptomHistory,
+      recurringSymptoms,
       recentReports: reports.map(report => {
         // Extract key medical terms and diagnoses from summary and text
         const fullText = `${report.summary} ${report.extractedText || ''}`.toLowerCase();
@@ -93,6 +142,8 @@ async function getMedicalHistory(userId: string) {
 
     console.log('📋 Extracted diagnoses:', history.allDiagnoses);
     console.log('📊 Abnormal parameters:', history.allAbnormalParameters);
+    console.log('🔄 Recurring symptoms:', history.recurringSymptoms);
+    console.log('📝 Total symptom logs:', history.symptomLogs.length);
 
     return history;
   } catch (error) {
@@ -167,12 +218,22 @@ router.get('/test-history/:userId', async (req: Request, res: Response) => {
     const reports = await Report.find({ userId });
     console.log(`📊 Found ${reports.length} reports`);
     
+    // Test symptom logs with both string and ObjectId
+    const symptomLogsString = await SymptomLog.find({ userId });
+    const symptomLogsObjectId = mongoose.Types.ObjectId.isValid(userId) 
+      ? await SymptomLog.find({ userId: new mongoose.Types.ObjectId(userId) })
+      : [];
+    
+    console.log(`📝 Symptom logs (string query): ${symptomLogsString.length}`);
+    console.log(`📝 Symptom logs (ObjectId query): ${symptomLogsObjectId.length}`);
+    
     const history = await getMedicalHistory(userId);
     
     res.json({
       success: true,
       userId,
       reportCount: reports.length,
+      symptomLogsCount: symptomLogsString.length || symptomLogsObjectId.length,
       history
     });
   } catch (error: any) {

@@ -151,12 +151,38 @@ async function analyzeSymptoms(symptomsText, medicalHistory = null) {
     
     // Build medical history context
     let historyContext = '';
-    if (medicalHistory && medicalHistory.recentReports && medicalHistory.recentReports.length > 0) {
+    if (medicalHistory) {
       historyContext = `\n\nPATIENT'S MEDICAL HISTORY:
+`;
+
+      // Add symptom tracking history
+      if (medicalHistory.symptomLogs && medicalHistory.symptomLogs.length > 0) {
+        historyContext += `\nRECENT SYMPTOM TRACKING (Last 30 days):
+The patient has been tracking the following symptoms:
+
+`;
+        medicalHistory.symptomLogs.forEach((log, idx) => {
+          historyContext += `${idx + 1}. ${new Date(log.date).toLocaleDateString()} - Severity: ${log.severity}
+   Symptoms: ${log.symptoms.join(', ')}
+   ${log.temperature ? `Temperature: ${log.temperature}°F` : ''}
+   ${log.notes ? `Notes: ${log.notes}` : ''}
+
+`;
+        });
+
+        if (medicalHistory.recurringSymptoms && medicalHistory.recurringSymptoms.length > 0) {
+          historyContext += `\n🔄 RECURRING SYMPTOMS: ${medicalHistory.recurringSymptoms.join(', ')}
+`;
+        }
+      }
+
+      // Add medical reports
+      if (medicalHistory.recentReports && medicalHistory.recentReports.length > 0) {
+        historyContext += `\nMEDICAL REPORTS:
 The patient has the following medical history from recent reports:
 
 `;
-      medicalHistory.recentReports.forEach((report, idx) => {
+        medicalHistory.recentReports.forEach((report, idx) => {
         historyContext += `Report ${idx + 1} (${new Date(report.date).toLocaleDateString()}):
 - Summary: ${report.summary}
 ${report.diagnoses && report.diagnoses.length > 0 ? `- Previous Diagnoses: ${report.diagnoses.join(', ')}` : ''}
@@ -175,7 +201,7 @@ ${report.abnormalParameters.length > 0 ? `- Abnormal findings: ${report.abnormal
 `;
       }
       
-      historyContext += `
+        historyContext += `
 CRITICAL INSTRUCTIONS FOR MEDICAL HISTORY ANALYSIS:
 1. PRIORITIZE past diagnoses and conditions from the patient's medical history
 2. If current symptoms match a previously diagnosed condition, list that condition FIRST with HIGH probability
@@ -183,12 +209,17 @@ CRITICAL INSTRUCTIONS FOR MEDICAL HISTORY ANALYSIS:
 4. Consider chronic conditions and recurring patterns from the medical history
 5. Reference specific findings from past reports when relevant
 6. If the patient has a history of allergies or specific conditions (like allergic bronchitis), consider these FIRST when symptoms match
+7. PAY SPECIAL ATTENTION to recurring symptoms from the symptom tracker - these indicate chronic or persistent issues
+8. If current symptoms match tracked symptoms, mention the pattern and frequency
 
 When analyzing, ask yourself:
 - Does this match any condition mentioned in the patient's medical history?
 - Could this be a recurrence or flare-up of a known condition?
 - Are there patterns in the medical history that explain current symptoms?
+- Has the patient been tracking similar symptoms recently? What does the pattern suggest?
+- Are the current symptoms part of a chronic condition indicated by recurring tracked symptoms?
 `;
+      }
     }
     
     const prompt = `You are a medical AI assistant analyzing patient symptoms. 
@@ -241,7 +272,10 @@ Return ONLY the JSON object, no additional text.`;
     const analysis = JSON.parse(jsonText);
     
     // Add flag to indicate if medical history was used
-    analysis.usedMedicalHistory = medicalHistory !== null && medicalHistory.recentReports && medicalHistory.recentReports.length > 0;
+    analysis.usedMedicalHistory = medicalHistory !== null && (
+      (medicalHistory.recentReports && medicalHistory.recentReports.length > 0) ||
+      (medicalHistory.symptomLogs && medicalHistory.symptomLogs.length > 0)
+    );
     
     return analysis;
     

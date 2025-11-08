@@ -10,22 +10,28 @@ Enhanced the symptom checker to use the patient's medical history from saved rep
 
 When a user analyzes symptoms:
 - System retrieves the 5 most recent medical reports for the user
+- Fetches symptom logs from the last 30 days (up to 10 entries)
 - Extracts key information:
-  - Report summaries
+  - Report summaries and diagnoses
   - Abnormal/critical parameters
   - Report dates
   - Recurring abnormal findings across multiple reports
+  - Tracked symptoms with dates, severity, and notes
+  - Recurring symptom patterns (symptoms logged 2+ times)
 
 ### 2. AI-Powered Analysis with Context
 
 The Gemini AI receives:
 - Current symptoms described by the user
-- Patient's medical history (if available)
+- Patient's medical history from reports (if available)
+- Patient's symptom tracking history (if available)
 - Instructions to look for:
   - Patterns matching previous conditions
   - Symptoms related to known abnormal parameters
   - Potential complications or progression
   - Possible recurrence of previous issues
+  - Recurring symptom patterns from tracking
+  - Chronic conditions indicated by persistent symptoms
 
 ### 3. Personalized Results
 
@@ -90,10 +96,27 @@ The analysis considers:
    - Current symptoms may be related to medications
    - AI can identify potential side effects
 
+4. **Symptom Pattern Recognition**:
+   - User has logged "headache" 5 times in the last month
+   - Reports headache again
+   - AI recognizes chronic pattern and suggests migraine evaluation
+
+5. **Allergic Condition Tracking**:
+   - User previously diagnosed with allergic bronchitis
+   - Has logged cough symptoms multiple times
+   - Current cough analyzed as likely allergic bronchitis recurrence
+
+## Completed Features
+
+✅ Medical report history integration
+✅ Symptom tracker logs integration
+✅ Recurring symptom pattern detection
+✅ Past diagnosis extraction and prioritization
+
 ## Future Enhancements
 
-- Include symptom logs from SymptomTracker
 - Add medication history integration
-- Track symptom patterns over time
-- Generate health trend reports
-- Alert for concerning patterns
+- Generate health trend reports and visualizations
+- Alert for concerning patterns or worsening trends
+- Predict potential health issues based on patterns
+- Integration with wearable device data
