@@ -1,8 +1,105 @@
 import express, { Request, Response } from 'express';
 import SymptomLog from '../models/SymptomLog';
+import Report from '../models/Report';
 import { analyzeSymptoms } from '../services/geminiService';
 
 const router = express.Router();
+
+// Helper function to get patient's medical history
+async function getMedicalHistory(userId: string) {
+  try {
+    console.log('📋 Fetching medical history for userId:', userId);
+    
+    // Get the most recent 5 reports
+    const reports = await Report.find({ userId })
+      .sort({ uploadDate: -1 })
+      .limit(5)
+      .select('summary parameters metadata.reportDate extractedText uploadDate');
+
+    console.log(`📊 Found ${reports.length} reports for user`);
+
+    if (!reports || reports.length === 0) {
+      console.log('⚠️  No medical history found for user');
+      return null;
+    }
+
+    // Extract relevant medical information
+    const history = {
+      recentReports: reports.map(report => {
+        // Extract key medical terms and diagnoses from summary and text
+        const fullText = `${report.summary} ${report.extractedText || ''}`.toLowerCase();
+        const diagnoses: string[] = [];
+        
+        // Common diagnosis patterns
+        const diagnosisPatterns = [
+          /diagnosis[:\s]+([^.\n]+)/gi,
+          /diagnosed with[:\s]+([^.\n]+)/gi,
+          /impression[:\s]+([^.\n]+)/gi,
+          /condition[:\s]+([^.\n]+)/gi,
+          /findings[:\s]+([^.\n]+)/gi
+        ];
+        
+        diagnosisPatterns.forEach(pattern => {
+          const matches = fullText.matchAll(pattern);
+          for (const match of matches) {
+            if (match[1] && match[1].trim().length > 3) {
+              diagnoses.push(match[1].trim());
+            }
+          }
+        });
+        
+        return {
+          date: report.metadata?.reportDate || report.uploadDate,
+          summary: report.summary,
+          diagnoses: diagnoses.length > 0 ? diagnoses : [],
+          abnormalParameters: report.parameters
+            .filter(p => p.status === 'abnormal' || p.status === 'critical')
+            .map(p => `${p.name}: ${p.value} ${p.unit || ''} (${p.status})`)
+        };
+      }),
+      allAbnormalParameters: [] as string[],
+      allDiagnoses: [] as string[]
+    };
+
+    // Collect all unique abnormal parameters and diagnoses
+    const abnormalSet = new Set<string>();
+    const diagnosisSet = new Set<string>();
+    
+    reports.forEach(report => {
+      report.parameters
+        .filter(p => p.status === 'abnormal' || p.status === 'critical')
+        .forEach(p => abnormalSet.add(p.name));
+      
+      // Extract diagnoses from summary and text
+      const fullText = `${report.summary} ${report.extractedText || ''}`.toLowerCase();
+      const diagnosisPatterns = [
+        /diagnosis[:\s]+([^.\n]+)/gi,
+        /diagnosed with[:\s]+([^.\n]+)/gi,
+        /impression[:\s]+([^.\n]+)/gi
+      ];
+      
+      diagnosisPatterns.forEach(pattern => {
+        const matches = fullText.matchAll(pattern);
+        for (const match of matches) {
+          if (match[1] && match[1].trim().length > 3) {
+            diagnosisSet.add(match[1].trim());
+          }
+        }
+      });
+    });
+    
+    history.allAbnormalParameters = Array.from(abnormalSet);
+    history.allDiagnoses = Array.from(diagnosisSet);
+
+    console.log('📋 Extracted diagnoses:', history.allDiagnoses);
+    console.log('📊 Abnormal parameters:', history.allAbnormalParameters);
+
+    return history;
+  } catch (error) {
+    console.error('Error fetching medical history:', error);
+    return null;
+  }
+}
 
 // Get all symptom logs for a user
 router.get('/:userId', async (req: Request, res: Response) => {
@@ -61,10 +158,35 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-// Analyze symptoms using AI
+// Test endpoint to check medical history
+router.get('/test-history/:userId', async (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+    console.log('🧪 Testing medical history fetch for userId:', userId);
+    
+    const reports = await Report.find({ userId });
+    console.log(`📊 Found ${reports.length} reports`);
+    
+    const history = await getMedicalHistory(userId);
+    
+    res.json({
+      success: true,
+      userId,
+      reportCount: reports.length,
+      history
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// Analyze symptoms using AI with medical history
 router.post('/analyze', async (req: Request, res: Response) => {
   try {
-    const { symptoms } = req.body;
+    const { symptoms, userId } = req.body;
 
     if (!symptoms || typeof symptoms !== 'string' || !symptoms.trim()) {
       return res.status(400).json({
@@ -73,7 +195,17 @@ router.post('/analyze', async (req: Request, res: Response) => {
       });
     }
 
-    const analysis = await analyzeSymptoms(symptoms.trim());
+    // Get patient's medical history if userId is provided
+    let medicalHistory: any = null;
+    if (userId) {
+      console.log('🔍 Attempting to fetch medical history for userId:', userId);
+      medicalHistory = await getMedicalHistory(userId);
+      console.log('📋 Medical history retrieved:', medicalHistory ? 'Yes' : 'No');
+    } else {
+      console.log('⚠️  No userId provided, skipping medical history');
+    }
+
+    const analysis = await analyzeSymptoms(symptoms.trim(), medicalHistory);
 
     res.json(analysis);
   } catch (error: any) {

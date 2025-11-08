@@ -20,6 +20,7 @@ interface AnalysisResult {
   urgency: 'low' | 'medium' | 'high';
   urgencyMessage: string;
   disclaimer: string;
+  usedMedicalHistory?: boolean;
 }
 
 const SymptomChecker = () => {
@@ -42,9 +43,24 @@ const SymptomChecker = () => {
     setLoading(true);
 
     try {
+      // Get userId from localStorage or sessionStorage
+      const userStr = localStorage.getItem('user') || sessionStorage.getItem('user');
+      let userId = localStorage.getItem('userId') || null;
+      
+      if (userStr) {
+        const user = JSON.parse(userStr);
+        userId = user._id || user.id || userId;
+      }
+
+      console.log('🔍 Sending symptom analysis request with userId:', userId);
+      console.log('📦 User data available:', !!userStr);
+
       const response = await axios.post(`${API_URL}/symptoms/analyze`, {
-        symptoms: symptoms.trim()
+        symptoms: symptoms.trim(),
+        userId: userId // Include userId to fetch medical history
       });
+
+      console.log('✅ Analysis response received:', response.data);
 
       setAnalysis(response.data);
     } catch (error: any) {
@@ -341,6 +357,21 @@ const SymptomChecker = () => {
         {/* Analysis Results */}
         {analysis && !loading && (
           <div className="space-y-4">
+            {/* Medical History Used Indicator */}
+            {analysis.usedMedicalHistory && (
+              <Card className="p-4 shadow-card border-blue-200 bg-blue-50">
+                <div className="flex items-center gap-2 text-blue-800">
+                  <span className="text-xl">📋</span>
+                  <div>
+                    <h3 className="font-semibold text-sm">Personalized Analysis</h3>
+                    <p className="text-xs">
+                      This analysis includes insights from your medical history
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            )}
+
             {/* Urgency Level */}
             <Card
               className={`p-4 shadow-card border-2 ${getUrgencyColor(

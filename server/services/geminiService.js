@@ -139,7 +139,7 @@ Focus on the most important health information and findings.`;
   }
 }
 
-async function analyzeSymptoms(symptomsText) {
+async function analyzeSymptoms(symptomsText, medicalHistory = null) {
   try {
     console.log('Starting symptom analysis with Gemini AI...');
     
@@ -149,10 +149,52 @@ async function analyzeSymptoms(symptomsText) {
     
     const geminiModel = initializeGemini();
     
+    // Build medical history context
+    let historyContext = '';
+    if (medicalHistory && medicalHistory.recentReports && medicalHistory.recentReports.length > 0) {
+      historyContext = `\n\nPATIENT'S MEDICAL HISTORY:
+The patient has the following medical history from recent reports:
+
+`;
+      medicalHistory.recentReports.forEach((report, idx) => {
+        historyContext += `Report ${idx + 1} (${new Date(report.date).toLocaleDateString()}):
+- Summary: ${report.summary}
+${report.diagnoses && report.diagnoses.length > 0 ? `- Previous Diagnoses: ${report.diagnoses.join(', ')}` : ''}
+${report.abnormalParameters.length > 0 ? `- Abnormal findings: ${report.abnormalParameters.join(', ')}` : '- No abnormal findings'}
+
+`;
+      });
+
+      if (medicalHistory.allDiagnoses && medicalHistory.allDiagnoses.length > 0) {
+        historyContext += `\n⚠️ KNOWN PAST DIAGNOSES: ${medicalHistory.allDiagnoses.join(', ')}
+`;
+      }
+      
+      if (medicalHistory.allAbnormalParameters.length > 0) {
+        historyContext += `\nRecurring abnormal parameters across reports: ${medicalHistory.allAbnormalParameters.join(', ')}
+`;
+      }
+      
+      historyContext += `
+CRITICAL INSTRUCTIONS FOR MEDICAL HISTORY ANALYSIS:
+1. PRIORITIZE past diagnoses and conditions from the patient's medical history
+2. If current symptoms match a previously diagnosed condition, list that condition FIRST with HIGH probability
+3. Explicitly mention if this appears to be a recurrence of a known condition
+4. Consider chronic conditions and recurring patterns from the medical history
+5. Reference specific findings from past reports when relevant
+6. If the patient has a history of allergies or specific conditions (like allergic bronchitis), consider these FIRST when symptoms match
+
+When analyzing, ask yourself:
+- Does this match any condition mentioned in the patient's medical history?
+- Could this be a recurrence or flare-up of a known condition?
+- Are there patterns in the medical history that explain current symptoms?
+`;
+    }
+    
     const prompt = `You are a medical AI assistant analyzing patient symptoms. 
 
 PATIENT SYMPTOMS:
-${symptomsText}
+${symptomsText}${historyContext}
 
 Please provide a comprehensive symptom analysis in the following JSON format:
 {
@@ -197,6 +239,9 @@ Return ONLY the JSON object, no additional text.`;
     }
     
     const analysis = JSON.parse(jsonText);
+    
+    // Add flag to indicate if medical history was used
+    analysis.usedMedicalHistory = medicalHistory !== null && medicalHistory.recentReports && medicalHistory.recentReports.length > 0;
     
     return analysis;
     
