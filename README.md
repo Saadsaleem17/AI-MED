@@ -1,73 +1,130 @@
-# Welcome to your Lovable project
 
-## Project info
+# AI-MED
 
-**URL**: https://lovable.dev/projects/e93a0190-f5ea-451b-b375-cb904114c8d7
+AI-MED is a clinical decision-support tool that uses patient history and medical risk analysis to generate structured, doctor-ready reports. It aims to assist healthcare professionals with faster initial assessment, consistent record evaluation, and improved patient communication.
 
-## How can I edit this code?
+## Objective
 
-There are several ways of editing your application.
+Reduce the manual workload in reviewing patient history by using AI to:
 
-**Use Lovable**
+* Extract key clinical details from structured/unstructured inputs
+* Assess potential health risks based on standard medical guidelines
+* Provide a concise summary and handout for doctors and patients
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e93a0190-f5ea-451b-b375-cb904114c8d7) and start prompting.
+This is not a diagnostic engine. It is an assistive information system to support clinical workflows.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Key Features
 
-**Use your preferred IDE**
+* Patient record ingestion: symptoms, vitals, medications, medical history
+* Rule-based and ML-based risk scoring (expandable with evidence-based models)
+* Doctor-friendly summary including:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+  * Critical warnings
+  * Suggested areas of examination
+  * Relevant historical patterns
+* Exportable handouts as PDFs or data objects
+* Modular architecture for integrating EHR or hospital systems later
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Tech Stack
 
-Follow these steps:
+* Python
+* Scikit-learn or custom rule-based models
+* Flask/FastAPI backend for modular deployment
+* Optional: React/Streamlit UI for clinician dashboard
+* PDF generation library for handout output
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Project Structure
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+AI-MED/
+  src/
+    data_processing/
+    models/
+    risk_analysis/
+    report_generation/
+  ui/
+  examples/
+  tests/
+  requirements.txt
+  README.md
 ```
 
-**Edit a file directly in GitHub**
+This structure will evolve as modules expand.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## How It Works
 
-**Use GitHub Codespaces**
+1. Intake: User enters patient history (form or uploading their prescriptions)
+2. Parsing: System standardizes symptoms, vitals, ICD-coded conditions (planned)
+3. Risk Scoring: Algorithm checks correlations with known risk factors
+4. Output: Generates a structured medical brief for physicians
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Flow Example:
 
-## What technologies are used for this project?
+```
+Patient Input → History Parsing → Risk Analysis → Doctor Handout
+```
 
-This project is built with:
+## Setup & Usage
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Clone the project:
 
-## How can I deploy this project?
+```bash
+git clone https://github.com/Saadsaleem17/AI-MED.git
+cd AI-MED
+```
 
-Simply open [Lovable](https://lovable.dev/projects/e93a0190-f5ea-451b-b375-cb904114c8d7) and click on Share -> Publish.
+Install requirements:
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+pip install -r requirements.txt
+```
 
-Yes, you can!
+Run locally:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+python app.py
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Open UI (if enabled) in browser:
+`http://localhost:5000`
+
+## Current Limitations
+
+* Limited dataset for risk scoring benchmarks
+* Does not replace certified medical decision systems
+* Needs deeper clinical validation with real practitioner feedback
+* NLP support for unstructured medical text is under development
+
+## Roadmap
+
+| Feature                              | Status      |
+| ------------------------------------ | ----------- |
+| OCR for written prescriptions        | Completed   |
+| Website and Database systems         | Completed   |
+| Symptoms based analysis              | Completed   |
+| Basic risk scoring                   | In progress |
+| PDF handout generation               | In progress |
+| EHR integration capability           | Planned     |
+| Evidence-based model training        | Planned     |
+| HIPAA/GDPR-compliant deployment      | Planned     |
+
+## Contributing
+
+Contributions focused on medical data standards, validated scoring models, and UI improvement are welcome.
+
+Steps:
+
+* Fork repository
+* Create feature branch
+* Submit pull request with description
+
+## License
+
+To be defined (MIT recommended).
+
+## Disclaimer
+
+AI-MED is an assistive tool and must not be used as a sole basis for medical diagnosis or treatment.
+
+
+If you want, I’ll tailor this further once your repo has actual folders, functions, and UI screenshots. I can also draft **feature badges**, a **logo**, and sample patient input/outputs for the README to look polished.
