@@ -147,7 +147,11 @@ const SignIn = () => {
                 Remember me
               </Label>
             </div>
-            <button className="text-sm text-primary font-medium">
+            <button
+              type="button"
+              onClick={() => navigate('/forgot-password')}
+              className="text-sm text-primary font-medium"
+            >
               Forgot password?
             </button>
           </div>

@@ -15,6 +15,8 @@ export interface IUser extends Document {
   verificationToken?: string;
   verificationExpires?: Date;
   emailVerifiedAt?: Date;
+  resetPasswordToken?: string;
+  resetPasswordExpires?: Date;
   // Health Profile
   bloodGroup?: string;
   height?: number; // in cm
@@ -86,6 +88,12 @@ const UserSchema: Schema = new Schema({
     type: Date
   },
   emailVerifiedAt: {
+    type: Date
+  },
+  resetPasswordToken: {
+    type: String
+  },
+  resetPasswordExpires: {
     type: Date
   },
   // Health Profile

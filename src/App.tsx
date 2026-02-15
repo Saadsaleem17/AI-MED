@@ -23,8 +23,8 @@ import HealthRecords from "./pages/HealthRecords";
 import ReportDetail from "./pages/ReportDetail";
 import NotFound from "./pages/NotFound";
 import VerifyEmail from "./pages/VerifyEmail";
-import ResendVerification from "./pages/ResendVerification";
-
+import ResendVerification from "./pages/ResendVerification";import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 const queryClient = new QueryClient();
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
@@ -44,6 +44,8 @@ const App = () => (
           <Route path="/signup" element={<SignUp />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="/resend-verification" element={<ResendVerification />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           
           {/* Protected routes */}
           <Route path="/home" element={<AuthGuard><Home /></AuthGuard>} />

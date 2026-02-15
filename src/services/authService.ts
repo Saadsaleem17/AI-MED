@@ -289,6 +289,43 @@ class AuthService {
   isAuthenticated(): boolean {
     return !!this.token && !!this.user;
   }
+
+  updateUser(updatedUser: User): void {
+    this.user = updatedUser;
+
+    const userData = JSON.stringify(this.user);
+    if (this.rememberMe) {
+      localStorage.setItem('user', userData);
+    } else {
+      sessionStorage.setItem('user', userData);
+    }
+  }
+
+  async forgotPassword(email: string): Promise<{ success: boolean; message?: string; error?: string }> {
+    try {
+      const response = await fetch(`${API_URL}/auth/forgot-password`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      return await response.json();
+    } catch (error) {
+      return { success: false, error: 'Network error. Please try again.' };
+    }
+  }
+
+  async resetPassword(token: string, password: string): Promise<{ success: boolean; message?: string; error?: string }> {
+    try {
+      const response = await fetch(`${API_URL}/auth/reset-password`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, password }),
+      });
+      return await response.json();
+    } catch (error) {
+      return { success: false, error: 'Network error. Please try again.' };
+    }
+  }
 }
 
 export const authService = new AuthService();

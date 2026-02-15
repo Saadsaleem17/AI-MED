@@ -6,7 +6,7 @@ import { createRequire } from 'module';
 import { OAuth2Client } from 'google-auth-library';
 
 const require = createRequire(import.meta.url);
-const { sendVerificationEmail } = require('../services/emailService');
+const { sendVerificationEmail, sendPasswordResetEmail } = require('../services/emailService');
 
 const router = express.Router();
 
@@ -138,7 +138,18 @@ router.post('/login', async (req: Request, res: Response) => {
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
-          isVerified: user.isVerified
+          phone: user.phone,
+          dateOfBirth: user.dateOfBirth,
+          bloodGroup: user.bloodGroup,
+          height: user.height,
+          weight: user.weight,
+          gender: user.gender,
+          allergies: user.allergies,
+          chronicConditions: user.chronicConditions,
+          emergencyContact: user.emergencyContact,
+          isVerified: user.isVerified,
+          profilePicture: user.profilePicture,
+          authProvider: user.authProvider
         }
       }
     });
@@ -172,9 +183,12 @@ router.get('/me', async (req: Request, res: Response) => {
       });
     }
 
+    const userData = user.toObject();
+    userData.id = userData._id;
+
     res.json({
       success: true,
-      data: user
+      data: userData
     });
   } catch (error) {
     res.status(401).json({
@@ -314,6 +328,116 @@ router.post('/resend-verification', async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       error: (error as Error).message
+    });
+  }
+});
+
+// Forgot Password - send reset email
+router.post('/forgot-password', async (req: Request, res: Response) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        error: 'Email is required'
+      });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      // Don't reveal if user exists - always return success
+      return res.json({
+        success: true,
+        message: 'If an account with that email exists, a password reset link has been sent.'
+      });
+    }
+
+    if (user.authProvider === 'google' && !user.password) {
+      return res.status(400).json({
+        success: false,
+        error: 'This account uses Google sign-in. Please sign in with Google instead.'
+      });
+    }
+
+    // Generate reset token
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const resetExpires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+
+    user.resetPasswordToken = resetToken;
+    user.resetPasswordExpires = resetExpires;
+    await user.save();
+
+    // Send password reset email
+    const emailResult = await sendPasswordResetEmail(email, resetToken, user.firstName);
+
+    if (!emailResult.success) {
+      console.error('Failed to send password reset email:', emailResult.error);
+      return res.status(500).json({
+        success: false,
+        error: 'Failed to send password reset email. Please try again.'
+      });
+    }
+
+    res.json({
+      success: true,
+      message: 'If an account with that email exists, a password reset link has been sent.'
+    });
+  } catch (error) {
+    console.error('Forgot password error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Something went wrong. Please try again.'
+    });
+  }
+});
+
+// Reset Password - verify token and set new password
+router.post('/reset-password', async (req: Request, res: Response) => {
+  try {
+    const { token, password } = req.body;
+
+    if (!token || !password) {
+      return res.status(400).json({
+        success: false,
+        error: 'Token and new password are required'
+      });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({
+        success: false,
+        error: 'Password must be at least 6 characters'
+      });
+    }
+
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid or expired reset token. Please request a new password reset.'
+      });
+    }
+
+    // Set new password (will be hashed by the pre-save hook)
+    user.password = password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+    await user.save();
+
+    res.json({
+      success: true,
+      message: 'Password has been reset successfully. You can now sign in with your new password.'
+    });
+  } catch (error) {
+    console.error('Reset password error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Something went wrong. Please try again.'
     });
   }
 });

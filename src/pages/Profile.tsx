@@ -10,11 +10,23 @@ import { useEffect, useState } from "react";
 const Profile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(authService.getUser());
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Update user data when component mounts
-    const currentUser = authService.getUser();
-    setUser(currentUser);
+    // Fetch fresh user data from server on mount
+    const fetchUser = async () => {
+      try {
+        const freshUser = await authService.getCurrentUser();
+        if (freshUser) {
+          setUser(freshUser);
+        }
+      } catch (error) {
+        console.error('Failed to fetch user:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUser();
   }, []);
 
   const handleLogout = () => {

@@ -51,9 +51,9 @@ const EditProfile = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Update local storage
+        // Update authService and storage with fresh data
         const updatedUser = { ...user, ...data.user };
-        localStorage.setItem('user', JSON.stringify(updatedUser));
+        authService.updateUser(updatedUser);
         
         toast.success('Profile updated successfully');
         navigate('/profile');
