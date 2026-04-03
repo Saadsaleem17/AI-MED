@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import { authService } from "@/services/authService";
 import { toast } from "sonner";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 const EditProfile = () => {
   const navigate = useNavigate();
   const user = authService.getUser();
@@ -35,7 +37,7 @@ const EditProfile = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/profile', {
+      const response = await fetch(`${API_URL}/auth/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
