@@ -78,12 +78,17 @@ router.post('/ocr', upload.single('file'), async (req: Request, res: Response) =
     res.json({ 
       success: true,
       data: {
+        status: result.status || 'medical_document',
         text: result.text || result.rawText || '',
+        rawText: result.rawText || result.text || '',
+        ocrConfidence: result.ocrConfidence || result.confidence || 0,
         confidence: result.ocrConfidence || result.confidence || 0,
+        medicalConfidence: result.medicalConfidence || 0,
         isMedical: result.isMedical || false,
         reportType: result.reportType || null,
         parameters: result.parameters || [],
         foundKeywords: result.foundKeywords || [],
+        keywordCount: result.keywordCount || 0,
         aiAnalysis: result.aiAnalysis || null, // Include AI analysis
         originalFilename: req.file.originalname
       }

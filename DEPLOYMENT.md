@@ -64,3 +64,20 @@ npm install
 npm run build
 npm run server:build
 ```
+
+## Troubleshooting: "Failed to process file"
+
+If upload/report processing fails in production:
+
+1. Confirm frontend env in Vercel:
+   - `VITE_API_URL=https://your-backend.onrender.com/api`
+2. Confirm backend env in Render/Railway:
+   - `OCR_SPACE_API_KEY` is set
+   - `GEMINI_API_KEY` is set (if using Gemini analysis)
+   - `MONGODB_URI` is set
+3. Open backend health URL:
+   - `https://your-backend.onrender.com/health`
+4. Open OCR health URL:
+   - `https://your-backend.onrender.com/api/ocr/health`
+
+If `VITE_API_URL` is missing, frontend defaults to localhost and upload will fail from deployed sites.

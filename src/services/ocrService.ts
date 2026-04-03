@@ -33,6 +33,15 @@ export interface OCRResult {
 class OCRService {
   async extractText(file: File): Promise<OCRResult> {
     try {
+      const isLocalApi = API_URL.includes('localhost') || API_URL.includes('127.0.0.1');
+      const isLocalBrowser = typeof window !== 'undefined' && (
+        window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      );
+
+      if (isLocalApi && !isLocalBrowser) {
+        throw new Error('Upload service is not configured for production. Set VITE_API_URL in your deployment environment to your hosted backend URL (e.g. https://your-backend.onrender.com/api).');
+      }
+
       console.log('Uploading file for OCR processing...');
       
       const formData = new FormData();
@@ -43,15 +52,38 @@ class OCRService {
         body: formData,
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => null);
 
-      if (!result.success) {
+      if (!response.ok) {
+        const details = result?.details || result?.error || `HTTP ${response.status}`;
+        throw new Error(details);
+      }
+
+      if (!result?.success) {
         throw new Error(result.error || 'OCR processing failed');
       }
 
-      return result.data;
+      const data = result.data || {};
+
+      return {
+        status: data.status || 'medical_document',
+        text: data.text,
+        rawText: data.rawText,
+        ocrConfidence: data.ocrConfidence ?? data.confidence ?? 0,
+        medicalConfidence: data.medicalConfidence ?? 0,
+        isMedical: data.isMedical,
+        reportType: data.reportType,
+        parameters: data.parameters || [],
+        foundKeywords: data.foundKeywords || [],
+        keywordCount: data.keywordCount ?? 0,
+        aiAnalysis: data.aiAnalysis,
+        originalFilename: data.originalFilename,
+      };
     } catch (error) {
       console.error('OCR Service Error:', error);
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
       throw new Error('Failed to process file. Please try again.');
     }
   }
